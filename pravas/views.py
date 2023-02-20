@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
 
 
 def home_view(request):
@@ -14,7 +15,12 @@ def register_request(request):
     if request.method == "POST":
         form = UserRegistration(request.POST)
         if form.is_valid():
-            user = form.save()
+            firstname = form.cleaned_data['firstname']
+            lastname = form.cleaned_data['lastname']
+            user = form.save(commit=False)
+            user.first_name = firstname
+            user.last_name = lastname
+            user.save()
             login(request, user)
             messages.success(request, "Registration is successfull.")
             return redirect("pravas:home")
@@ -47,3 +53,8 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logout.")
     return redirect("pravas:home")
+
+
+def ticket_booking(request):
+    messages.info(request, "All tickets")
+    return render(request=request, template_name="ticket.html")
