@@ -10,7 +10,6 @@ from django.utils import timezone
 class user(models.Model):
     user_id = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    profile_photo = models.ImageField(upload_to='user_images/')
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=200, blank=True)
 
@@ -48,16 +47,27 @@ class Ticket(models.Model):
         max_length=50, choices=PLACES_CHOICES, default='Ahmedabad')
     destination = models.CharField(
         max_length=50, choices=PLACES_CHOICES, default='Ahmedabad')
-    departure_time = models.TimeField(auto_now=True)
-    total_time = models.TimeField(auto_now=True)
-    operators = models.CharField(max_length=50, default="GSRTC")
+    departure_time = models.TimeField()
+    total_time = models.TimeField()
+    OPERATORS_CHOICES = {
+        ('GSRTC', 'GSRTC'),
+        ('Bharat', 'Bharat'),
+        ('Kabra', 'Kabra'),
+        ('Tulsi', 'Tulsi'),
+    }
+    operators = models.CharField(
+        max_length=50, choices=OPERATORS_CHOICES, default="GSRTC")
+
+    def clean(self):
+        if self.source == self.destination:
+            raise ValidationError("Source and Destination can't be same")
 
 
 class TourBooking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
-    date_booked = models.DateTimeField(auto_now_add=True)
+    date_booked = models.DateTimeField()
     num_adults = models.PositiveSmallIntegerField()
     num_children = models.PositiveSmallIntegerField()
 
@@ -70,7 +80,7 @@ class TicketBooking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    date_booked = models.DateTimeField(auto_now_add=True)
+    date_booked = models.DateTimeField()
 
     def clean(self):
         if self.date_booked < timezone.now().date():
