@@ -80,6 +80,7 @@ class TicketBooking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
     date_booked = models.DateTimeField()
 
     def clean(self):

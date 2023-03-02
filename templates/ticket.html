@@ -4,11 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tikcets</title>
+    <title>Tickets</title>
   </head>
   <body>
-    <ul>
-      <li>ticket list</li>
-    </ul>
+    <form action="search_ticket" method="POST">
+      {% csrf_token %}
+      <label>From</label>
+      <select name="source">
+        <option>Ahmedabad</option>
+        <option>Rajkot</option>
+        <option>Surat</option>
+        <option>Baroda</option>
+        <option>Amreli</option>
+        <option>Kheda</option>
+        <option>Kutchh</option>
+        <option>Gandhinagar</option>
+        <option>Nadiad</option>
+        <option>Mahesana</option>
+        <option>Jamnagar</option>
+      </select>
+      <label>To</label>
+      <select name="destination">
+        <option>Junagadh</option>
+        <option>Rajkot</option>
+        <option>Amreli</option>
+        <option>Ahmedabad</option>
+        <option>Kheda</option>
+        <option>Kutchh</option>
+        <option>Gandhinagar</option>
+        <option>Surat</option>
+        <option>Baroda</option>
+        <option>Jamnagar</option>
+        <option>Nadiad</option>
+        <option>Mahesana</option>
+      </select>
+      <input type="submit" value="Search" />
+    </form>
   </body>
 </html>

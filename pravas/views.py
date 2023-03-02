@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
+from .models import user, Ticket, Tour, TicketBooking, TourBooking
 
 
 def home_view(request):
@@ -58,3 +59,14 @@ def logout_request(request):
 def ticket_booking(request):
     messages.info(request, "All tickets")
     return render(request=request, template_name="ticket.html")
+
+
+def search_ticket(request):
+    context = {}
+    if request.method == "POST":
+        source = request.POST["source"]
+        destination = request.POST["destination"]
+        tickets = Ticket.objects.filter(source=source, destination=destination)
+        context = {'tickets': tickets}
+        return render(request=request, template_name="search.html", context=context)
+    return redirect("pravas:ticket_booking")
