@@ -9,7 +9,16 @@
   <body>
     <ul>
       {%for ticket in tickets%}
-      <li>{{ticket.source}} -- {{ticket.destination}}</li>
+      <li>
+        {{ticket.source}} -- {{ticket.destination}}
+        <form action="book_ticket" method="POST">
+          {% csrf_token %}
+          <input type="text" name="ticket_id" value="{{ticket.id}}" hidden />
+          <!-- <input type="text" name="user_id" value="{{user.username}}" hidden /> -->
+          <input type="submit" value="book" />
+        </form>
+      </li>
+
       {%endfor%}
     </ul>
   </body>

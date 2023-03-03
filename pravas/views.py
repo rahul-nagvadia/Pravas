@@ -57,7 +57,6 @@ def logout_request(request):
 
 
 def ticket_booking(request):
-    messages.info(request, "All tickets")
     return render(request=request, template_name="ticket.html")
 
 
@@ -69,4 +68,17 @@ def search_ticket(request):
         tickets = Ticket.objects.filter(source=source, destination=destination)
         context = {'tickets': tickets}
         return render(request=request, template_name="search.html", context=context)
+    return redirect("pravas:ticket_booking")
+
+
+def book_ticket(request):
+    context = {}
+    if request.method == "POST":
+        ticket_id = request.POST["ticket_id"]
+        ticket = Ticket.objects.get(id=ticket_id)
+        user = request.user
+        booking_obj = TicketBooking(user=user, ticket=ticket)
+        booking_obj.save()
+        messages.success(request, "Ticket book successfully.")
+        return redirect("pravas:home")
     return redirect("pravas:ticket_booking")
