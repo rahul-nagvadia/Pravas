@@ -81,7 +81,7 @@ class TicketBooking(models.Model):
                              on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    date_booked = models.DateTimeField(auto_now=True)
+    date_booked = models.DateField(auto_now=True)
 
     def clean(self):
         if self.date_booked < timezone.now().date():
