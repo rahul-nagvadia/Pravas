@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-
+    target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="False"
+    aria-
+    label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="logout">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <form action="search_ticket" method="POST">
+    {% csrf_token %}
+    <label>From</label>
+    <select name="source">
+      <option>Ahmedabad</option>
+      <option>Rajkot</option>
+      <option>Surat</option>
+      <option>Baroda</option>
+      <option>Amreli</option>
+      <option>Kheda</option>
+      <option>Kutchh</option>
+      <option>Gandhinagar</option>
+      <option>Nadiad</option>
+      <option>Mahesana</option>
+      <option>Jamnagar</option>
+    </select>
+    <label>To</label>
+    <select name="destination">
+      <option>Junagadh</option>
+      <option>Rajkot</option>
+      <option>Amreli</option>
+      <option>Ahmedabad</option>
+      <option>Kheda</option>
+      <option>Kutchh</option>
+      <option>Gandhinagar</option>
+      <option>Surat</option>
+      <option>Baroda</option>
+      <option>Jamnagar</option>
+      <option>Nadiad</option>
+      <option>Mahesana</option>
+    </select>
+    <label>Date</label>
+    <input type="date" name="date_booked" />
+    <label>Quantity</label>
+    <input type="number" name="quantity" />
+    <input type="submit" value="Search" />
+  </form>
+
+  <!-- for showing if ticket was booked or not -->
+  {% if messages %} {% for message in messages %}
+  <div
+    class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+    role="alert"
+  >
+    {{ message }}
+  </div>
+  {% endfor %} {% endif %}
+</nav>
