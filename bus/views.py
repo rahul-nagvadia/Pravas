@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Bus, Seat, Booking
 from pravas.models import user, City
+from django.contrib import messages
 
 
 def search_ticket(request):
@@ -11,19 +12,13 @@ def search_ticket(request):
         city2 = City.objects.get(city_name=destination)
         date_booked = request.POST["date_booked"]
         bus_finded = Bus.objects.filter(source=city1, destination=city2)
-        seats_data = {}
-        total_seats = {}
         for bus in bus_finded:
-            cap = bus.capacity
-            total_seats[bus.id] = list(range(1, cap+1))
+            booked = 0
             bookings = Booking.objects.filter(bus=bus, date_booked=date_booked)
-            booked_seats = []
             for booking in bookings:
-                seat_n = booking.seat.seat_number
-                booked_seats.append(seat_n)
-            seats_data[bus.id] = booked_seats
-        context = {'bus_finded': bus_finded,
-                   'seats_data': seats_data, 'total_seats': total_seats, 'date_booked':date_booked}
+                booked+=1
+            bus.capacity = bus.capacity - booked
+        context = {'bus_finded': bus_finded,'date_booked':date_booked}
         return render(request=request, template_name="bus/search.html", context=context)
     
 def select_seat(request):
@@ -31,6 +26,15 @@ def select_seat(request):
         bus_id = request.POST["bus_id"]
         bus = Bus.objects.get(id=bus_id)
         date_booked = request.POST["date_booked"]
+        total_seats = []
+        for i in range (1, bus.capacity+1):
+            total_seats.append(i)
+        bookings = Booking.objects.filter(bus=bus, date_booked=date_booked)
+        booked_seats = []
+        for booking in bookings:
+            booked_seats.append(booking.seat.seat_number)
+        context = {'bus':bus, 'date_booked':date_booked, 'total_seats':total_seats, 'booked_seats':booked_seats}
+        return render(request=request, template_name="bus/seat.html", context=context)
 
 def book_ticket(request) :
     if request.method == "POST":
@@ -47,4 +51,5 @@ def book_ticket(request) :
         context = {
             'selected':selected, 'date_booked':date_booked
         }
-        return render(request=request, template_name='bus/seat.html', context=context)
+        messages.success(request, 'Ticket is booked')
+        return redirect("pravas:home")

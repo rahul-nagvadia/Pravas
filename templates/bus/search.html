@@ -23,8 +23,8 @@
       <p>Departure Time: {{bus.departure_time}}</p>
       <p>Total Time:{{bus.total_time}}</p>
       <p>Price:{{bus.price}}</p>
-      {{bus.id}}
-      <form action="book_ticket" method="post">
+      <p>Remaining Seats:{{bus.capacity}}</p>
+      <form action="select_seat" method="post">
         {% csrf_token %}
         <input type="text" name="bus_id" value="{{bus.id}}" hidden />
           <input
@@ -33,19 +33,8 @@
             value="{{date_booked}}"
             hidden
           />
-      {% for i in total_seats.1 %}
-        {% if i not in seats_data.1 %}
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="{{i}}" name="selected" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              {{i}}
-            </label>
-          </div>
-        {% endif %}
-      {% endfor %}
-          <input type="submit" value="book">
+          <input type="submit" value="select seat">
         </form>
-        
       <hr />
     </div>
     {%endfor%}
