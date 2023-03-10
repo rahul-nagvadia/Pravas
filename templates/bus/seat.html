@@ -15,38 +15,74 @@
     <title>Bus | Pravas</title>
   </head>
   <body>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-    <form action="book_ticket" method="POST">
-      {% csrf_token %}
-      <input type="text" name="bus_id" value="{{bus.id}}" hidden />
+    <!-- <div class="p-2">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player
+        src="https://assets3.lottiefiles.com/packages/lf20_mdbdc5l7.json"
+        background="transparent"
+        speed="1.5"
+        style="width: 400px; height: 400px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div> -->
+    <div
+      class="full-height d-flex flex-row justify-content-around align-items-center"
+    >
+      <div
+        class="d-flex flex-row justify-content-center align-items-center p-2"
+      >
+        <form action="book_ticket" method="POST">
+          {% csrf_token %}
+          <input type="text" name="bus_id" value="{{bus.id}}" hidden />
           <input
             type="date"
             name="date_booked"
             value="{{date_booked}}"
             hidden
           />
-      {% for i in total_seats %}
-        {% if i in booked_seats %}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="{{i}}" id="flexCheckDisabled" name="selected" disabled>
-          <label class="form-check-label" for="flexCheckDisabled">
-            {{i}}
-          </label>
-        </div>
-        {%else%}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="{{i}}" id="flexCheckDefault" name="selected">
-          <label class="form-check-label" >
-            {{i}}
-          </label>
-        </div>
-        {% endif %}
-      {% endfor %}
+          <div id="all-seat" class="d-flex flex-row">
+            {% for i in total_seats %} {% if i in booked_seats %}
+            <div class="seat form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{i}}"
+                id="flexCheckDisabled"
+                name="selected"
+                disabled
+              />
+              <div class="seat-design">{{i}}</div>
+            </div>
+            {%else%}
+            <div class="seat form-check seat">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{i}}"
+                id="flexCheckDefault"
+                name="selected"
+              />
+              <div class="seat-design">{{i}}</div>
+            </div>
+            {% endif %} {% if forloop.counter|divisibleby:5 %}
+          </div>
+          <div id="all-seat" class="d-flex flex-row">
+            {% endif %}{% endfor %}
+          </div>
+          <div class="book-button">
+            <input type="submit" value="book" />
+          </div>
+        </form>
+      </div>
 
+    <script>
+      const myDiv = document.querySelector("#all-seat"); // select the div element
 
-      <input type="submit" value="book">
-    </form>
-  </div>
+      const myDivChildren = myDiv.querySelectorAll("*"); // select all elements within the div
+
+      console.log(myDivChildren);
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
