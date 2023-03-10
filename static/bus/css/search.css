@@ -1,0 +1,56 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+.full-height {
+  position: relative;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+#all-seat {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#all-seat > div:nth-child(5n) {
+  display: block;
+}
+
+#all-seat > div:nth-child(3n) {
+  padding-left: 70px;
+}
+
+#all-seat > div {
+  margin: 5px;
+}
+
+.seat{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.seat-design{
+  height: 30px;
+  width: 30px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid rgb(255, 203, 135);
+  border-left: 3px solid rgb(255, 203, 135);
+  border-right: 3px solid rgb(255, 203, 135);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.book-button{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top:20px;
+}
+

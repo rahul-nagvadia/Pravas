@@ -16,27 +16,30 @@ def search_ticket(request):
             booked = 0
             bookings = Booking.objects.filter(bus=bus, date_booked=date_booked)
             for booking in bookings:
-                booked+=1
+                booked += 1
             bus.capacity = bus.capacity - booked
-        context = {'bus_finded': bus_finded,'date_booked':date_booked}
+        context = {'bus_finded': bus_finded, 'date_booked': date_booked}
         return render(request=request, template_name="bus/search.html", context=context)
-    
+
+
 def select_seat(request):
     if request.method == "POST":
         bus_id = request.POST["bus_id"]
         bus = Bus.objects.get(id=bus_id)
         date_booked = request.POST["date_booked"]
         total_seats = []
-        for i in range (1, bus.capacity+1):
-            total_seats.append(i)
+        for i in range(1, bus.capacity+1):
+            total_seats.append(int(i))
         bookings = Booking.objects.filter(bus=bus, date_booked=date_booked)
         booked_seats = []
         for booking in bookings:
             booked_seats.append(booking.seat.seat_number)
-        context = {'bus':bus, 'date_booked':date_booked, 'total_seats':total_seats, 'booked_seats':booked_seats}
+        context = {'bus': bus, 'date_booked': date_booked,
+                   'total_seats': total_seats, 'booked_seats': booked_seats}
         return render(request=request, template_name="bus/seat.html", context=context)
 
-def book_ticket(request) :
+
+def book_ticket(request):
     if request.method == "POST":
         bus_id = request.POST["bus_id"]
         bus = Bus.objects.get(id=bus_id)
@@ -46,10 +49,11 @@ def book_ticket(request) :
         for seat in selected:
             temp = int(seat)
             booked_seat = Seat.objects.get(id=temp)
-            obj = Booking(bus=bus, seat=booked_seat, user=user, date_booked=date_booked)
+            obj = Booking(bus=bus, seat=booked_seat,
+                          user=user, date_booked=date_booked)
             obj.save()
         context = {
-            'selected':selected, 'date_booked':date_booked
+            'selected': selected, 'date_booked': date_booked
         }
         messages.success(request, 'Ticket is booked')
         return redirect("pravas:home")
