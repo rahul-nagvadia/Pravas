@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+.main-section{
+    width: 60%;
+    height: 20%;
+    background-color: rgb(248, 237, 223);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 70px;
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.outer-section{
+    width: 100%;
+    margin-top: 50px;
+}
+.button-section{
+    margin-bottom: 50px;
+}
