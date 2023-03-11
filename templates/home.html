@@ -19,8 +19,10 @@
     <title>Home | PRAVAS</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"><h2>PRAVAS</h2></a>
+    <nav class="navbar navbar-expand-lg my-navbar">
+      <a class="navbar-brand" href="home"
+        ><h2 class="navbar-text">PRAVAS</h2></a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -46,7 +48,7 @@
               role="button"
               aria-haspopup="true"
               aria-expanded="false"
-              ><h2><i class="fa-solid fa-user"></i></h2
+              ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
             ></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="nav-link" href="#">{{user.username}}</a>
@@ -66,52 +68,65 @@
       class="d-flex flex-column justify-content-center align-items-center outer-section"
     >
       <div class="main-section">
-        <div
-          class="d-flex flex-row justify-content-around align-items-center button-section"
-        >
-          <button class="p-2 mod-button" id="button1">
-            <h3><i class="fa-solid fa-bus"></i></h3>
-          </button>
-          <button class="p-2 mod-button" id="button2">
-            <h3><i class="fa-solid fa-train"></i></h3>
-          </button>
-          <button class="p-2 mod-button" id="button3">
-            <h3><i class="fa-solid fa-plane-departure"></i></h3>
-          </button>
+        <div class="d-flex flex-row justify-content-around align-items-center">
+          <div
+            class="button-section d-flex flex-row justify-content-around align-items-center"
+          >
+            <button class="p-2 mod-button" id="button1">
+              <h3><i class="fa-solid fa-bus"></i></h3>
+            </button>
+            <button class="p-2 mod-button" id="button2">
+              <h3><i class="fa-solid fa-train"></i></h3>
+            </button>
+            <button class="p-2 mod-button" id="button3">
+              <h3><i class="fa-solid fa-plane-departure"></i></h3>
+            </button>
+          </div>
         </div>
 
         <div class="d-flex flex-row justify-content-center align-items-center">
           <div class="travel-form" id="div1" style="display: block">
-            <form action="../bus/search_ticket" method="POST">
+            <form
+              action="../bus/search_ticket"
+              method="POST"
+              onsubmit="return validateForm()"
+            >
               {% csrf_token %}
-              <div class="d-flex flex-row justify-content-center">
-                <div class="select-city form-input">
+              <div class="inner-form d-flex flex-row justify-content-around">
+                <div class="w-100 p-2 fields form-input form-group">
                   <label>From</label>
-                  <select name="source">
+                  <select name="source" class="form-control selectpicker">
+                    <option value=" ">From</option>
                     {% for city in cities %}
                     <option>{{city.city_name}}</option>
                     {% endfor %}
                   </select>
                 </div>
 
-                <div class="select-city form-input">
+                <div class="w-100 p-2 fields form-input form-group">
                   <label>To</label>
-                  <select name="destination">
+                  <select name="destination" class="form-control selectpicker">
+                    <option value=" ">To</option>
                     {% for city in cities %}
                     <option>{{city.city_name}}</option>
                     {% endfor %}
                   </select>
                 </div>
-                <div class="form-input">
+                <div class="w-100 p-2 fields form-input">
                   <label>Date</label>
-                  <input type="date" name="date_booked" />
+                  <input class="form-control" type="date" name="date_booked" />
                 </div>
               </div>
-              <div class="d-flex flex-row justify-content-center">
-                <input type="submit" value="Search" />
+              <div class="d-flex flex-row justify-content-center form-group">
+                <input
+                  class="form-control search-div"
+                  type="submit"
+                  value="Search"
+                />
               </div>
             </form>
           </div>
+
           <div class="travel-form" id="div2" style="display: none">
             This is div 2
           </div>
@@ -123,10 +138,18 @@
     </div>
     {% if messages %} {% for message in messages %}
     <div
-      class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+      class="messages alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
       role="alert"
     >
       {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     {% endfor %} {% endif %}
     <script>
@@ -154,6 +177,23 @@
         div2.style.display = "none";
         div3.style.display = "block";
       });
+
+      const today = new Date().toISOString().split("T")[0];
+      const sourceField = document.getElementsByName("source")[0];
+      const destinationField = document.getElementsByName("destination")[0];
+      const dateField = document.getElementsByName("date_booked")[0];
+
+      function validateForm() {
+        if (sourceField.value === destinationField.value) {
+          alert("Source and Destination cannot be the same");
+          return false;
+        }
+        if (dateField.value < today) {
+          alert("Date should be greater than or equal to today");
+          return false;
+        }
+        return true;
+      }
     </script>
 
     <script

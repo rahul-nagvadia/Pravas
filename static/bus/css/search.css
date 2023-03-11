@@ -3,11 +3,24 @@ html, body {
     margin: 0;
     padding: 0;
   }
+  .my-navbar{
+    background-color: #D27685;
+    color: #E9E8E8;
+  }
+.navbar-text {
+    color: #E9E8E8;
+  }
+  .nav-link{
+    color: black;
+  }
+  .nav-link:hover{
+    color: #913175;
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+  }
 .full-height {
   position: relative;
   align-items: center;
-  height: 100%;
-  width: 100%;
 }
 #all-seat {
   display: flex;
@@ -47,10 +60,45 @@ html, body {
   border-top-left-radius: 10px;
 }
 
+.booked-seat-design{
+  height: 30px;
+  width: 30px;
+  background-color: rgb(255, 94, 73);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid rgb(171, 62, 47);
+  border-left: 3px solid rgb(171, 62, 47);
+  border-right: 3px solid rgb(171, 62, 47);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
 .book-button{
   display: flex;
   justify-content: left;
   align-items: center;
   margin-top:20px;
 }
+.search-div:hover{
+  color: #913175;
+  box-shadow: 0 0 3px #913175;
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
 
+.bus-find{
+  border: 2px solid #913175;
+  margin-top: 2%;
+  padding-right: 2%;
+  border-radius: 20px;
+  background-color: antiquewhite;
+
+}
+
+.bus-fields{
+  
+  margin: 3%;
+  width: 100%;
+  height: 100%;
+}

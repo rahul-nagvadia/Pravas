@@ -12,6 +12,10 @@
     />
     {%load static%}
     <link rel="stylesheet" href="{%static 'bus/css/search.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/83c51c6793.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Bus | Pravas</title>
   </head>
   <body>
@@ -26,6 +30,51 @@
         autoplay
       ></lottie-player>
     </div> -->
+    <nav class="navbar navbar-expand-lg my-navbar">
+      <a class="navbar-brand" href="../pravas"
+        ><h2 class="navbar-text">PRAVAS</h2></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-
+        target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="False"
+        aria-
+        label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav-bar" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
+            ></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="nav-link" href="#">{{user.username}}</a>
+              <a class="nav-link" href="logout">Logout</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
     <div
       class="full-height d-flex flex-row justify-content-around align-items-center"
     >
@@ -52,7 +101,7 @@
                 name="selected"
                 disabled
               />
-              <div class="seat-design">{{i}}</div>
+              <div class="booked-seat-design">{{i}}</div>
             </div>
             {%else%}
             <div class="seat form-check seat">
@@ -70,11 +119,12 @@
           <div id="all-seat" class="d-flex flex-row">
             {% endif %}{% endfor %}
           </div>
-          <div class="book-button">
-            <input type="submit" value="book" />
+          <div class="d-flex flex-row justify-content-center form-group">
+            <input class="form-control search-div" type="submit" value="Book" />
           </div>
         </form>
       </div>
+    </div>
 
     <script>
       const myDiv = document.querySelector("#all-seat"); // select the div element

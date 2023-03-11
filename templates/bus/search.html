@@ -12,32 +12,102 @@
     />
     {%load static%}
     <link rel="stylesheet" href="{%static 'bus/css/search.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/83c51c6793.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Bus | Pravas</title>
   </head>
   <body>
-    {%for bus in bus_finded%}
-    <div
-      class="bus-find d-flex flex-column justify-content-center align-items-center"
-    >
-      <h4>{{bus.source.city_name}} - {{bus.destination.city_name}}</h4>
-      <p>Departure Time: {{bus.departure_time}}</p>
-      <p>Total Time:{{bus.total_time}}</p>
-      <p>Price:{{bus.price}}</p>
-      <p>Remaining Seats:{{bus.capacity}}</p>
-      <form action="select_seat" method="post">
-        {% csrf_token %}
-        <input type="text" name="bus_id" value="{{bus.id}}" hidden />
+    <nav class="navbar navbar-expand-lg my-navbar">
+      <a class="navbar-brand" href="../pravas"
+        ><h2 class="navbar-text">PRAVAS</h2></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-
+        target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="False"
+        aria-
+        label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav-bar" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
+            ></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="nav-link" href="#">{{user.username}}</a>
+              <a class="nav-link" href="logout">Logout</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      {%for bus in bus_finded%}
+      <div
+        class="w-75 d-flex flex-row justify-content-center align-items-center bus-find"
+      >
+        <div class="p-2 bus-fields">
+          <h3>{{bus.source.city_name}} - {{bus.destination.city_name}}</h3>
+        </div>
+        <div class="p-2 bus-fields">
+          <h5>Departure Time:</h5>
+          <h4>{{bus.departure_time}}</h4>
+        </div>
+        <div class="p-2 bus-fields">
+          <h5>Total Time:</h5>
+          <h4>{{bus.total_time}}</h4>
+        </div>
+        <div class="p-2 bus-fields">
+          <h5>Price:</h5>
+          <h4>{{bus.price}}</h4>
+        </div>
+        <div class="p-2 bus-fields">
+          <h5>Remaining Seats:</h5>
+          <h4>{{bus.capacity}}</h4>
+        </div>
+        <form action="select_seat" method="post">
+          {% csrf_token %}
+          <input type="text" name="bus_id" value="{{bus.id}}" hidden />
           <input
             type="date"
             name="date_booked"
             value="{{date_booked}}"
             hidden
           />
-          <input type="submit" value="select seat">
+          <div class="d-flex flex-row justify-content-center form-group">
+            <input
+              class="form-control search-div"
+              type="submit"
+              value="Select Seat"
+            />
+          </div>
         </form>
-      <hr />
+        <hr />
+      </div>
+      {%endfor%}
     </div>
-    {%endfor%}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- <script>
       $(document).ready(function () {
