@@ -12,9 +12,55 @@
     />
     {%load static%}
     <link rel="stylesheet" href="{%static 'bus/css/search.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/83c51c6793.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Bus | Pravas</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light my-navbar">
+      <a class="navbar-brand" href="#"><h2>PRAVAS</h2></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-
+        target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="False"
+        aria-
+        label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav-bar" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><h2><i class="fa-solid fa-user"></i></h2
+            ></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="nav-link" href="#">{{user.username}}</a>
+              <a class="nav-link" href="logout">Logout</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
     {%for bus in bus_finded%}
     <div
       class="bus-find d-flex flex-column justify-content-center align-items-center"
@@ -27,14 +73,9 @@
       <form action="select_seat" method="post">
         {% csrf_token %}
         <input type="text" name="bus_id" value="{{bus.id}}" hidden />
-          <input
-            type="date"
-            name="date_booked"
-            value="{{date_booked}}"
-            hidden
-          />
-          <input type="submit" value="select seat">
-        </form>
+        <input type="date" name="date_booked" value="{{date_booked}}" hidden />
+        <input type="submit" value="select seat" />
+      </form>
       <hr />
     </div>
     {%endfor%}

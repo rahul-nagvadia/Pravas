@@ -5,9 +5,9 @@ html, body {
   }
 .main-section{
     width: 70%;
-    height: 20%;
+    height: 400px;
     background-color: #D27685;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: #FFBABA 0px 50px 30px -20px, #FFBABA 0px 30px 60px -30px;
     padding: 70px;
     position: relative;
     border-radius: 30px;
@@ -60,4 +60,23 @@ button.mod-button:nth-of-type(3n):hover::before {
     padding: 5px;
     border-radius: 5px;
     position: absolute;
+}
+.travel-form{
+    width: 100%;
+}
+.search-div{
+    width: 100px;
+    border:2px solid #913175;
+}
+.search-div:hover{
+    color: #913175;
+    box-shadow: 0 0 3px #913175;
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
+.messages {
+    width: 30%;
+    position: absolute;
+    top: 8%;
+    right: 3%;
 }
