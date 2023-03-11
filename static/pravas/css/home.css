@@ -1,7 +1,19 @@
-html, body {
+html, body, section {
+    block-size: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+html {
+  scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+  .home-section{
+    height: 100%;
   }
   .my-navbar{
     background-color: #D27685;
@@ -98,4 +110,9 @@ button.mod-button:nth-of-type(3n):hover::before {
     position: absolute;
     top: 8%;
     right: 3%;
+}
+
+/* tour section  */
+.tour-section{
+  background-color: #913175;
 }

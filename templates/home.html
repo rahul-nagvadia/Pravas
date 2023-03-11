@@ -19,182 +19,154 @@
     <title>Home | PRAVAS</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg my-navbar">
-      <a class="navbar-brand" href="home"
-        ><h2 class="navbar-text">PRAVAS</h2></a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-
-        target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="False"
-        aria-
-        label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <section class="home-section">
+      <nav class="navbar navbar-expand-lg my-navbar">
+        <a class="navbar-brand" href="home"
+          ><h2 class="navbar-text">PRAVAS</h2></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-
+          target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="False"
+          aria-
+          label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse nav-bar" id="navbarText">
-        <ul class="navbar-nav ml-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link"
-              data-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
-            ></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="nav-link" href="#">{{user.username}}</a>
-              <a class="nav-link" href="logout">Logout</a>
-            </div>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="login">Login</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
+        <div class="collapse navbar-collapse nav-bar" id="navbarText">
+          <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
+              ></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="nav-link" href="#">{{user.username}}</a>
+                <a class="nav-link" href="logout">Logout</a>
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="login">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
 
-    <div
-      class="d-flex flex-column justify-content-center align-items-center outer-section"
-    >
-      <div class="main-section">
-        <div class="d-flex flex-row justify-content-around align-items-center">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center outer-section"
+      >
+        <div class="main-section">
           <div
-            class="button-section d-flex flex-row justify-content-around align-items-center"
+            class="d-flex flex-row justify-content-around align-items-center"
           >
-            <button class="p-2 mod-button" id="button1">
-              <h3><i class="fa-solid fa-bus"></i></h3>
-            </button>
-            <button class="p-2 mod-button" id="button2">
-              <h3><i class="fa-solid fa-train"></i></h3>
-            </button>
-            <button class="p-2 mod-button" id="button3">
-              <h3><i class="fa-solid fa-plane-departure"></i></h3>
-            </button>
-          </div>
-        </div>
-
-        <div class="d-flex flex-row justify-content-center align-items-center">
-          <div class="travel-form" id="div1" style="display: block">
-            <form
-              action="../bus/search_ticket"
-              method="POST"
-              onsubmit="return validateForm()"
+            <div
+              class="button-section d-flex flex-row justify-content-around align-items-center"
             >
-              {% csrf_token %}
-              <div class="inner-form d-flex flex-row justify-content-around">
-                <div class="w-100 p-2 fields form-input form-group">
-                  <label>From</label>
-                  <select name="source" class="form-control selectpicker">
-                    <option value=" ">From</option>
-                    {% for city in cities %}
-                    <option>{{city.city_name}}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-
-                <div class="w-100 p-2 fields form-input form-group">
-                  <label>To</label>
-                  <select name="destination" class="form-control selectpicker">
-                    <option value=" ">To</option>
-                    {% for city in cities %}
-                    <option>{{city.city_name}}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-                <div class="w-100 p-2 fields form-input">
-                  <label>Date</label>
-                  <input class="form-control" type="date" name="date_booked" />
-                </div>
-              </div>
-              <div class="d-flex flex-row justify-content-center form-group">
-                <input
-                  class="form-control search-div"
-                  type="submit"
-                  value="Search"
-                />
-              </div>
-            </form>
+              <button class="p-2 mod-button" id="button1">
+                <h3><i class="fa-solid fa-bus"></i></h3>
+              </button>
+              <button class="p-2 mod-button" id="button2">
+                <h3><i class="fa-solid fa-train"></i></h3>
+              </button>
+              <button class="p-2 mod-button" id="button3">
+                <h3><i class="fa-solid fa-plane-departure"></i></h3>
+              </button>
+            </div>
           </div>
 
-          <div class="travel-form" id="div2" style="display: none">
-            This is div 2
-          </div>
-          <div class="travel-form" id="div3" style="display: none">
-            This is div 3
+          <div
+            class="d-flex flex-row justify-content-center align-items-center"
+          >
+            <div class="travel-form" id="div1" style="display: block">
+              <form
+                action="../bus/search_ticket"
+                method="POST"
+                onsubmit="return validateForm()"
+              >
+                {% csrf_token %}
+                <div class="inner-form d-flex flex-row justify-content-around">
+                  <div class="w-100 p-2 fields form-input form-group">
+                    <label>From</label>
+                    <select name="source" class="form-control selectpicker">
+                      <option value=" ">From</option>
+                      {% for city in cities %}
+                      <option>{{city.city_name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="w-100 p-2 fields form-input form-group">
+                    <label>To</label>
+                    <select
+                      name="destination"
+                      class="form-control selectpicker"
+                    >
+                      <option value=" ">To</option>
+                      {% for city in cities %}
+                      <option>{{city.city_name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="w-100 p-2 fields form-input">
+                    <label>Date</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      name="date_booked"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center form-group">
+                  <input
+                    class="form-control search-div"
+                    type="submit"
+                    value="Search"
+                  />
+                </div>
+              </form>
+            </div>
+
+            <div class="travel-form" id="div2" style="display: none">
+              This is div 2
+            </div>
+            <div class="travel-form" id="div3" style="display: none">
+              This is div 3
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    {% if messages %} {% for message in messages %}
-    <div
-      class="messages alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
-      role="alert"
-    >
-      {{ message }}
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
+      {% if messages %} {% for message in messages %}
+      <div
+        class="messages alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+        role="alert"
       >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% endfor %} {% endif %}
-    <script>
-      const button1 = document.getElementById("button1");
-      const button2 = document.getElementById("button2");
-      const button3 = document.getElementById("button3");
-      const div1 = document.getElementById("div1");
-      const div2 = document.getElementById("div2");
-      const div3 = document.getElementById("div3");
-
-      button1.addEventListener("click", () => {
-        div1.style.display = "block";
-        div2.style.display = "none";
-        div3.style.display = "none";
-      });
-
-      button2.addEventListener("click", () => {
-        div1.style.display = "none";
-        div2.style.display = "block";
-        div3.style.display = "none";
-      });
-
-      button3.addEventListener("click", () => {
-        div1.style.display = "none";
-        div2.style.display = "none";
-        div3.style.display = "block";
-      });
-
-      const today = new Date().toISOString().split("T")[0];
-      const sourceField = document.getElementsByName("source")[0];
-      const destinationField = document.getElementsByName("destination")[0];
-      const dateField = document.getElementsByName("date_booked")[0];
-
-      function validateForm() {
-        if (sourceField.value === destinationField.value) {
-          alert("Source and Destination cannot be the same");
-          return false;
-        }
-        if (dateField.value < today) {
-          alert("Date should be greater than or equal to today");
-          return false;
-        }
-        return true;
-      }
-    </script>
+        {{ message }}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %} {% endif %}
+    </section>
+    <section class="home-section tour-section"></section>
+    <script src="{% static 'pravas/js/home.js' %}"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
