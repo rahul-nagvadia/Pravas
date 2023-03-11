@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from pravas.views import logout_request
+from pravas.views import logout_request, home_view
 app_name = "bus"
 
 urlpatterns = [
