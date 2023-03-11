@@ -6,11 +6,13 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .models import City, user
+from tours.models import Tour
 
 
 def home_view(request):
     cities = City.objects.all()
-    context = {'cities': cities}
+    tours = Tour.objects.all()
+    context = {'cities': cities, 'tours': tours}
     return render(request, "home.html", context=context)
 
 
