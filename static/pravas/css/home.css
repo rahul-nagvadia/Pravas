@@ -1,14 +1,70 @@
-html, body {
+html, body, section {
+    block-size: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
   }
+  html {
+    scroll-snap-type: y mandatory;
+  }
+  .land-page{
+    position: relative;
+  }
+  .pravas {
+    position: absolute;
+    top: 30%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 7.5rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    -webkit-text-stroke: 2px black;
+    text-stroke: 2px black;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+  }
+
+  .tent{
+    top: 85%;
+    left: 85%;
+    font-size: 10rem;
+  }
+  .feather{
+    top: 30%;
+    left: 20%;
+    font-size: 5rem;
+  }
+  .carousel-item {
+    position: relative;
+  }
   .my-navbar{
-    background-color: #D27685;
-    color: #E9E8E8;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    }
+    
+    .carousel-item {
+      height: 100vh;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+.tour_image{
+  object-fit: cover;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+  .home-section{
+    height: 100%;
   }
 .navbar-text {
-    color: #E9E8E8;
+    color: #020202;
   }
   .nav-link{
     color: black;
@@ -24,16 +80,18 @@ html, body {
     background-color: #D27685;
     box-shadow: #FFBABA 0px 50px 30px -20px, #FFBABA 0px 30px 60px -30px;
     padding: 70px;
-    position: relative;
     border-radius: 30px;
-    margin-top: 70px;
+    margin-top: 200px;
 }
 .button-section{
     width: 50%;
 }
 .outer-section{
     width: 100%;
-    margin-top: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .button-section{
     margin-bottom: 50px;
@@ -99,3 +157,12 @@ button.mod-button:nth-of-type(3n):hover::before {
     top: 8%;
     right: 3%;
 }
+
+/* tour section  */
+.tour-section{
+  background-color: #913175;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
