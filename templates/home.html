@@ -27,7 +27,7 @@
   <body>
     <section class="home-section">
       <nav class="navbar navbar-expand-lg my-navbar">
-        <a class="navbar-brand" href=""><h2 class="navbar-text">PRAVAS</h2></a>
+        <a class="navbar-brand" href="" style="color:black">PRAVAS</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -44,7 +44,11 @@
 
         <div class="collapse navbar-collapse nav-bar" id="navbarText">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="ticket_book">Ticket Book</a>
+            </li>
             {% if user.is_authenticated %}
+           
             <li class="nav-item dropdown">
               <a
                 class="nav-link"
@@ -53,13 +57,13 @@
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
-                ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
-              ></a>
+                ><i class="fa-solid fa-user"></i></a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="nav-link" href="#">{{user.username}}</a>
+                <a class="nav-link" href="profile">{{user.username}}</a>
                 <a class="nav-link" href="logout">Logout</a>
               </div>
             </li>
+
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="login">Login</a>
@@ -88,11 +92,12 @@
           </div>
 
           {% for tour in tours %}
-          <div class="carousel-item{% if loop.first %} active{% endif %}">
+          <div class="carousel-item">
             <img
-              class="d-block w-100 h-100"
+              class="tour_image d-block w-100 h-100"
               src="../{{tour.banner}}"
               alt="tour_image"
+              style="object-fit: cover"
             />
             <div class="carousel-caption d-none d-md-block">
               <h5>{{tour.name}}</h5>
@@ -126,88 +131,7 @@
         </a>
       </div>
     </section>
-    <section class="home-section">
-      <div class="outer-section">
-        <div class="main-section">
-          <div
-            class="d-flex flex-row justify-content-around align-items-center"
-          >
-            <div
-              class="button-section d-flex flex-row justify-content-around align-items-center"
-            >
-              <button class="p-2 mod-button" id="button1">
-                <h3><i class="fa-solid fa-bus"></i></h3>
-              </button>
-              <button class="p-2 mod-button" id="button2">
-                <h3><i class="fa-solid fa-train"></i></h3>
-              </button>
-              <button class="p-2 mod-button" id="button3">
-                <h3><i class="fa-solid fa-plane-departure"></i></h3>
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="d-flex flex-row justify-content-center align-items-center"
-          >
-            <div class="travel-form" id="div1" style="display: block">
-              <form
-                action="../bus/search_ticket"
-                method="POST"
-                onsubmit="return validateForm()"
-              >
-                {% csrf_token %}
-                <div class="inner-form d-flex flex-row justify-content-around">
-                  <div class="w-100 p-2 fields form-input form-group">
-                    <label>From</label>
-                    <select name="source" class="form-control selectpicker">
-                      <option value=" ">From</option>
-                      {% for city in cities %}
-                      <option>{{city.city_name}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-
-                  <div class="w-100 p-2 fields form-input form-group">
-                    <label>To</label>
-                    <select
-                      name="destination"
-                      class="form-control selectpicker"
-                    >
-                      <option value=" ">To</option>
-                      {% for city in cities %}
-                      <option>{{city.city_name}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  <div class="w-100 p-2 fields form-input">
-                    <label>Date</label>
-                    <input
-                      class="form-control"
-                      type="date"
-                      name="date_booked"
-                    />
-                  </div>
-                </div>
-                <div class="d-flex flex-row justify-content-center form-group">
-                  <input
-                    class="form-control search-div"
-                    type="submit"
-                    value="Search"
-                  />
-                </div>
-              </form>
-            </div>
-
-            <div class="travel-form" id="div2" style="display: none">
-              This is div 2
-            </div>
-            <div class="travel-form" id="div3" style="display: none">
-              This is div 3
-            </div>
-          </div>
-        </div>
-      </div>
+    
       {% if messages %} {% for message in messages %}
       <div
         class="messages alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
@@ -224,7 +148,7 @@
         </button>
       </div>
       {% endfor %} {% endif %}
-    </section>
+    
     <script src="{% static 'pravas/js/home.js' %}"></script>
 
     <script

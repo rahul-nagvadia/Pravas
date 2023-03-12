@@ -9,4 +9,5 @@ urlpatterns = [
     path('book_ticket', views.book_ticket, name='book_ticket'),
     path('select_seat', views.select_seat, name='select_seat'),
     path('logout', logout_request, name='logout'),
+    path('cancel_booking', views.cancel_booking, name='cancel_booking'),
 ]

@@ -4,7 +4,9 @@ html, body, section {
     margin: 0;
     padding: 0;
   }
-
+  html {
+    scroll-snap-type: y mandatory;
+  }
   .land-page{
     position: relative;
   }
@@ -50,10 +52,10 @@ html, body, section {
       -o-background-size: cover;
       background-size: cover;
     }
-
-html {
-  scroll-snap-type: y mandatory;
+.tour_image{
+  object-fit: cover;
 }
+
 section {
   scroll-snap-align: start;
   scroll-snap-stop: always;

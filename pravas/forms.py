@@ -12,9 +12,9 @@ class UserRegistration(UserCreationForm):
         attrs={'class': 'form-control', 'placeholder': 'Username'}))
     email = forms.EmailField(required=True, widget=forms.EmailInput(
         attrs={'class': 'form-control', 'placeholder': 'Email'}))
-    password1 = forms.CharField(required=True, widget=forms.TextInput(
+    password1 = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Password'}))
-    password2 = forms.CharField(required=True, widget=forms.TextInput(
+    password2 = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Confirm password'}))
 
     class Meta:

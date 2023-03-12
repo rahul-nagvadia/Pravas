@@ -57,3 +57,12 @@ def book_ticket(request):
         }
         messages.success(request, 'Ticket is booked')
         return redirect("pravas:home")
+
+
+def cancel_booking(request):
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        booking = Booking.objects.get(id=booking_id)
+        booking.delete()
+        messages.success(request, 'Booking is canceled  ')
+        return redirect("pravas:profile")

@@ -31,9 +31,7 @@
       ></lottie-player>
     </div> -->
     <nav class="navbar navbar-expand-lg my-navbar">
-      <a class="navbar-brand" href="../pravas"
-        ><h2 class="navbar-text">PRAVAS</h2></a
-      >
+      <a class="navbar-brand" href="" style="color:black">PRAVAS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -50,7 +48,11 @@
 
       <div class="collapse navbar-collapse nav-bar" id="navbarText">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="ticket_book">Ticket Book</a>
+          </li>
           {% if user.is_authenticated %}
+         
           <li class="nav-item dropdown">
             <a
               class="nav-link"
@@ -59,13 +61,13 @@
               role="button"
               aria-haspopup="true"
               aria-expanded="false"
-              ><h2 class="navbar-text"><i class="fa-solid fa-user"></i></h2
-            ></a>
+              ><i class="fa-solid fa-user"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="nav-link" href="#">{{user.username}}</a>
+              <a class="nav-link" href="profile">{{user.username}}</a>
               <a class="nav-link" href="logout">Logout</a>
             </div>
           </li>
+
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="login">Login</a>
@@ -74,7 +76,6 @@
         </ul>
       </div>
     </nav>
-
     <div
       class="full-height d-flex flex-row justify-content-around align-items-center"
     >
