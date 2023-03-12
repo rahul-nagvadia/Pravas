@@ -41,7 +41,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg my-navbar">
-        <a class="navbar-brand" href="" style="color:black">PRAVAS</a>
+        <a class="navbar-brand" href="../pravas" style="color:black">PRAVAS</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -136,6 +136,7 @@
           </button>
         </div>
         <div class="bus-booking" id="div1">
+          {% if bus_bookings %}
           {% for booking in bus_bookings %}
           <div class="bookings">
             <div>
@@ -174,10 +175,17 @@
             </div>
           </div>
           {% endfor %}
+          {%else%}
+          <div>
+            <b>-You Don't have any bookings yet-</b>
+          </div>
+          {% endif %}
+          
         </div>
         <div class="train-booking" id="div2" style="display: none">div-2</div>
         <div class="plane-booking" id="div3" style="display: none">div-3</div>
         <div class="tour-booking" id="div4" style="display: none">
+          {% if tour_bookings %}
           {% for booking in tour_bookings %}
           <div class="bookings">
             <div>
@@ -211,6 +219,13 @@
             </div>
           </div>
           {% endfor %}
+          {%else%}
+          <div>
+            <b>-You Don't have any bookings yet-</b>
+          </div>
+            
+          {% endif %}
+          
         </div>
       </div>
     </div>

@@ -10,11 +10,42 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/83c51c6793.js"
+      crossorigin="anonymous"
+    ></script>
     {%load static%}
     <link rel="stylesheet" href="{%static 'pravas/css/styles.css'%}" />
     <title>Login | PRAVAS</title>
   </head>
   <body>
+    <div class="icons plane1">
+      <i class="fa-solid fa-plane"></i>
+    </div>
+    <div class="icons plane2">
+      <i class="fa-solid fa-plane"></i>
+    </div>
+    <div class="icons mountain-city1">
+      <i class="fa-solid fa-mountain-city"></i>
+    </div>
+    <div class="icons mountain-city2">
+      <i class="fa-solid fa-mountain-city"></i>
+    </div>
+    <div class="icons bus1">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
+    <div class="icons bus2">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
+    <div class="icons bus3">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
     <div class="full-height d-flex justify-content-center">
       <div class="title">
         <h1>PRAVAS</h1>
@@ -24,9 +55,9 @@
           <h2>Login</h2>
         </div>
         <div class="innerbox-child d-flex flex-row">
-          <form method="POST" action="">
+          <form method="POST" action="" class="login-form">
             {% csrf_token %} {{ login_form.as_p }}
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn" type="submit">Login</button>
           </form>
         </div>
         <div class="innerbox-child">

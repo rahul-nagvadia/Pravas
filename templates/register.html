@@ -12,9 +12,34 @@
     />
     {%load static%}
     <link rel="stylesheet" href="{%static 'pravas/css/styles.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/83c51c6793.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Register | PRAVAS</title>
   </head>
   <body>
+    <div class="icons plane1">
+      <i class="fa-solid fa-plane"></i>
+    </div>
+    <div class="icons plane2">
+      <i class="fa-solid fa-plane"></i>
+    </div>
+    <div class="icons mountain-city1">
+      <i class="fa-solid fa-mountain-city"></i>
+    </div>
+    <div class="icons mountain-city2">
+      <i class="fa-solid fa-mountain-city"></i>
+    </div>
+    <div class="icons bus1">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
+    <div class="icons bus2">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
+    <div class="icons bus3">
+      <i class="fa-solid fa-bus-simple"></i>
+    </div>
     <div class="full-height d-flex justify-content-center">
       <div class="title">
         <h1>PRAVAS</h1>
@@ -25,7 +50,7 @@
         <div class="innerbox-child">
           <form method="POST" action="">
             {% csrf_token %} {{register_form.as_p}}
-            <button class="btn btn-primary" type="submit">Register</button>
+            <button class="btn " type="submit">Register</button>
           </form>
         </div>
 
