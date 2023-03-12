@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -8,9 +9,9 @@ html, body {
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: #E6E5A3;
+  background-color: #9e4784;
 }
-.innerbox{
+.innerbox {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,8 +19,8 @@ html, body {
   text-align: center;
   padding: 3%;
   border-radius: 20px;
-  box-shadow: 5px 5px #557153;
-  background-color: #7D8F69;
+  background-color: #d27685;
+  box-shadow: 10px 10px 10px #557153;
   letter-spacing: 1.2px;
 }
 .innerbox-child {
@@ -31,22 +32,122 @@ html, body {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
   z-index: -1;
 }
-  
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.btn{
+  background-color: #913175;
+  color: aliceblue;
+}
+.btn:hover{
+  color: #913175;
+  background-color: aliceblue;
+  box-shadow: 0 0 3px #913175;
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
 h1 {
   text-transform: uppercase;
   font-size: 151px;
   letter-spacing: 12px;
-  color: #40513B;
-  text-shadow: 3px 3px #473C33;
+  color: #40513b;
+  text-shadow: 3px 3px #473c33;
 }
-.link{
+.link {
   text-decoration: none;
-  color: #F0A04B;
+  color: #f0a04b;
 }
-.link:hover{
-  color: #473C33;
+.link:hover {
+  color: #473c33;
+}
+
+.icons {
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  font-family: "Covered By Your Grace", cursive;
+  letter-spacing: 0.2em;
+  -webkit-text-stroke: 2px black;
+  text-stroke: 2px black;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.plane1 {
+  top: 20%;
+  left: 20%;
+  font-size: 2rem;
+  animation: verticalfloat 2s infinite;
+}
+.plane2 {
+  top: 10%;
+  left: 80%;
+  font-size: 4rem;
+  animation: verticalfloat 3s infinite;
+}
+.bus1 {
+  top: 60%;
+  left: 70%;
+  font-size: 5rem;
+  animation: horizontalfloat 3s infinite;
+}
+.bus2 {
+  top: 60%;
+  left: 75%;
+  font-size: 3rem;
+  animation: horizontalfloat 5s infinite;
+}
+.bus3 {
+  top: 70%;
+  left: 75%;
+  font-size: 7rem;
+  animation: horizontalfloat 2s infinite;
+}
+.mountain-city1 {
+  bottom: 0%;
+  left: 0%;
+  font-size: 30rem;
+}
+
+.mountain-city2 {
+  bottom: 25%;
+  left: 78%;
+  font-size: 15rem;
+}
+.location{
+
+}
+
+@keyframes verticalfloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes horizontalfloat {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
