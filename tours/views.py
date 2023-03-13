@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Destination, Tour, TourBooking
+from .models import Destination, Tour, TourBooking, Feedback
 from pravas.models import user
 from django.contrib import messages
 
@@ -9,7 +9,8 @@ def see_tour(request):
         tour_id = request.POST["tour_id"]
         tour = Tour.objects.get(id=tour_id)
         destination = tour.destinations.all()
-        context = {'tour': tour, 'destination': destination}
+        feedback= Feedback.objects.filter(tour=tour)
+        context = {'tour': tour, 'destination': destination,'feedback':feedback}
         return render(request=request, template_name="tours/see_tour.html", context=context)
 
 
@@ -25,3 +26,19 @@ def book_tour(request):
         new_booking.save()
         messages.success(request, 'Tour is booked')
         return redirect("pravas:home")
+
+def comment(request):
+        tour_id = request.POST["tour_id"]
+        tour = Tour.objects.get(id=tour_id)
+        desc = request.POST["comnts"]
+        fedback = Feedback(tour=tour, message=desc)
+        fedback.save()
+        return redirect("pravas:home")
+
+def cancel_booking(request):
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        booking = TourBooking.objects.get(id=booking_id)
+        booking.delete()
+        messages.success(request, 'Booking is canceled  ')
+        return redirect("pravas:profile")
