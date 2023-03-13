@@ -19,11 +19,68 @@
     <title>Tour | Details</title>
   </head>
   <body>
-    {{tour.name}}
+    <nav class="navbar navbar-expand-lg my-navbar">
+      <a class="navbar-brand" href="../pravas" style="color: black">PRAVAS</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-
+        target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="False"
+        aria-
+        label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav-bar" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="ticket_book">Ticket Book</a>
+          </li>
+          {% if user.is_authenticated %}
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><i class="fa-solid fa-user"></i
+            ></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="nav-link" href="profile">{{user.username}}</a>
+              <a class="nav-link" href="logout">Logout</a>
+            </div>
+          </li>
+
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="tour_name">
+      {{tour.name}}
+    </div>
+    
     <hr />
-    {{tour.description}}
+    <h3>Tour Description:</h3><br>
+    <h4>{{tour.description}}</h4>
+    <br>
     <hr />
-    {{tour.price}}
+    <br>
+
+    <div class="pricee">
+    <h3>Price:-   <span>{{tour.price}}</span></h3>
+    </div>
+    <br>  
     <hr />
     <div class="booking-form">
       <form action="book_tour" method="POST" onsubmit="return validateForm()">
@@ -32,9 +89,10 @@
         Date: <input type="date" name="date_booked" /> Number of Passenger:
         <input type="number" name="number_of_pass" />
         <input type="submit" value="BOOK" />
+        
       </form>
     </div>
-    <h2 class="heading">Destinations Details</h2>
+    <h2 class="heading"><span></span>Destinations Details</h2>
     {% for place in destination %}
     <div class="destination-div">
       <div class="destination">
@@ -50,6 +108,26 @@
       </div>
     </div>
     {% endfor %}
+    
+    <br>
+    <div class="comm">
+      Feedback:- 
+    </div>
+
+    {% for fed in feedback %}
+         {{fed.message}}
+         <br>
+         <hr>
+    {% endfor %}
+
+    
+    <form action="comment" method="POST">
+      {% csrf_token %}
+      <input type="text" value="{{tour.id}}" name="tour_id" hidden />
+      <label for="comments">Comment:</label>
+      <textarea name="comnts"></textarea>
+      <button type="submit">Submit</button>
+    </form>
 
     <script>
       const today = new Date().toISOString().split("T")[0];

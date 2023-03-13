@@ -196,7 +196,7 @@
             <div>Date: <b>{{booking.date}}</b></div>
             <div>Number of passengers: <b> {{booking.num_passengers}}</b></div>
             <div>
-              <form method="POST" action="../bus/cancel_booking">
+              <form method="POST" action="../tours/cancel_booking">
                 {% csrf_token %}
                 <input
                   type="text"
