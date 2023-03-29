@@ -164,7 +164,38 @@
             </div>
 
             <div class="travel-form" id="div2" style="display: none">
-              This is div 2
+              <form action="../train/search" method="GET">
+                {% csrf_token %}
+                <div class="inner-form d-flex flex-row justify-content-around">
+                    <div class="w-100 p-2 fields form-input form-group">
+                        <label>From</label>
+                        <select name="source" class="form-control selectpicker">
+                            <option value=" ">From</option>
+                            {% for station in stations %}
+                            <option value="{{station.code}}">{{station.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="w-100 p-2 fields form-input form-group">
+                        <label>To</label>
+                        <select name="destination" class="form-control selectpicker">
+                            <option value=" ">To</option>
+                            {% for station in stations %}
+                            <option value="{{station.code}}">{{station.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="w-100 p-2 fields form-input">
+                        <label>Date</label>
+                        <input class="form-control" type="date" name="date_booked" />
+                    </div>
+                </div>
+        
+                <div class="d-flex flex-row justify-content-center form-group">
+                    <input class="form-control search-div" type="submit" value="Search" />
+                </div>
+        
+            </form>
             </div>
             <div class="travel-form" id="div3" style="display: none">
               This is div 3

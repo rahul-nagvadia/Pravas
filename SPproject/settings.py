@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pravas',
     'bus',
     'tours',
+    'train',
 ]
 
 MIDDLEWARE = [

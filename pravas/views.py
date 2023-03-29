@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from .models import City, user
 from tours.models import Tour, TourBooking
 from bus.models import Booking
+from train.models import Station
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 
@@ -21,7 +22,8 @@ def home_view(request):
 
 def ticket_book(request):
     cities = City.objects.all()
-    context = {'cities': cities}
+    stations = Station.objects.all()
+    context = {'cities': cities, 'stations': stations}
     return render(request, "ticket_booking.html", context=context)
 
 
