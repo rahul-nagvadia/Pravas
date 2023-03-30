@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
+from datetime import datetime
 
 def search_view(request):
     source_station_id = request.GET["source"]
     destination_station_id = request.GET["destination"]
+    booking_date_str = request.GET.get("date_booked")
+    booking_date = datetime.strptime(booking_date_str, "%Y-%m-%d").date()
+    booking_day = booking_date.strftime("%A").lower().capitalize()
+
     
     source_station = Station.objects.get(code=source_station_id)
     destination_station = Station.objects.get(code=destination_station_id)
@@ -24,7 +29,10 @@ def search_view(request):
         source_schedule = next((s for s in schedules if s.station_id == source_station_id), None)
         destination_schedule = next((s for s in schedules if s.station_id == destination_station_id), None)
         if source_schedule and destination_schedule and source_schedule.sequence < destination_schedule.sequence:
-            trains.append(source_schedule.train)
+            run_days = RunDays.objects.filter(train=train_id, day=booking_day)
+            if run_days.exists():
+                trains.append(source_schedule.train)
+
 
     train_departure_arrival_times = {}
     for train in trains:

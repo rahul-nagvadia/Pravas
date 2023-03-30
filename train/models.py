@@ -59,7 +59,7 @@ class SeatAllocation(models.Model):
     id = models.IntegerField(primary_key=True)
     coachAllocation = models.ForeignKey(
         CoachAllocation, on_delete=models.CASCADE)
-    seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
+    seat = models.ManyToManyField(Seat)
 
     def __str__(self):
         return f"{self.coachAllocation} - {self.seat}"
@@ -88,8 +88,7 @@ class TrainBooking(models.Model):
         Train, on_delete=models.CASCADE)
     seat_allocation = models.ForeignKey(
         SeatAllocation, on_delete=models.CASCADE)
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL,
-    #                          on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     date_booked = models.DateField()
 
     def __str__(self):
