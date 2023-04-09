@@ -22,6 +22,7 @@ body {
   background-color: #d27685;
   box-shadow: 10px 10px 10px #557153;
   letter-spacing: 1.2px;
+  z-index: 10;
 }
 .innerbox-child {
   margin: 20px;
@@ -124,9 +125,7 @@ h1 {
   left: 78%;
   font-size: 15rem;
 }
-.location{
 
-}
 
 @keyframes verticalfloat {
   0% {
