@@ -182,8 +182,99 @@
           {% endif %}
           
         </div>
-        <div class="train-booking" id="div2" style="display: none">div-2</div>
-        <div class="plane-booking" id="div3" style="display: none">div-3</div>
+        <div class="train-booking" id="div2" style="display: none">
+
+          {% if train_bookings %}
+          {% for booking in train_bookings %}
+          <div class="bookings">
+            <div>
+              <b>{{booking.train_schedule.train_number}} -- {{booking.train_schedule.name}}</b>
+            </div>
+            <div>Date: <b>{{booking.date_booked}}</b></div>
+            <div>Seat Number: <b> {{booking.seat_allocation.seat}}</b></div>
+            <div>
+              <form method="POST" action="../train/cancel_booking">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="booking_id"
+                  value="{{booking.id}}"
+                  hidden
+                />
+                {% if booking.date_booked < today %}
+                <button type="submit" class="btn btn-danger" disabled>
+                  Cancel
+                </button>
+                {% elif booking.date_booked == today and booking.date_booked <= now %}
+                <button type="submit" class="btn btn-danger" disabled>
+                  Cancel
+                </button>
+                {% else %}
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+          {%else%}
+          <div>
+            <b>-You Don't have any bookings yet-</b>
+          </div>
+          {% endif %}
+
+
+
+        </div>
+        <div class="plane-booking" id="div3" style="display: none">
+
+
+          {% if flight_bookings %}
+          {% for booking in flight_bookings %}
+          <div class="bookings">
+            <div>
+              <b
+                >{{booking.flight.fsource.city_name}} --
+                {{booking.flight.fdestination.city_name}}</b
+              >
+            </div>
+            <div>Date: <b>{{booking.date_booked}}</b></div>
+            <div>
+              Departure-time: <b>{{booking.flight.departure_time}}</b> Total-time:
+              <b>{{booking.flight.total_time}}</b>
+            </div>
+            <div>Seat Number: <b> {{booking.seat.seat_number}}</b></div>
+            <div>
+              <form method="POST" action="../flight/cancel_booking">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="booking_id"
+                  value="{{booking.id}}"
+                  hidden
+                />
+                {% if booking.date_booked < today %}
+                <button type="submit" class="btn btn-danger" disabled>
+                  Cancel
+                </button>
+                {% elif booking.date_booked == today and booking.date_booked <= now %}
+                <button type="submit" class="btn btn-danger" disabled>
+                  Cancel
+                </button>
+                {% else %}
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+          {%else%}
+          <div>
+            <b>-You Don't have any bookings yet-</b>
+          </div>
+          {% endif %}
+
+
+        </div>
         <div class="tour-booking" id="div4" style="display: none">
           {% if tour_bookings %}
           {% for booking in tour_bookings %}

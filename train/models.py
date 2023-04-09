@@ -83,7 +83,7 @@ class Schedule(models.Model):
     distance = models.IntegerField()
 
 
-class TrainBooking(models.Model):
+class BookingTrain(models.Model):
     train_schedule = models.ForeignKey(
         Train, on_delete=models.CASCADE)
     seat_allocation = models.ForeignKey(
@@ -91,6 +91,4 @@ class TrainBooking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     date_booked = models.DateField()
 
-    def __str__(self):
-        return f'{self.train_schedule.train} - Seat {self.seat_allocation.seat.seat_number} ({self.date_booked})'
 

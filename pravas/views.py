@@ -8,6 +8,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .models import City, user
 from tours.models import Tour, TourBooking
+from train.models import BookingTrain
+from flight.models import fBooking
 from bus.models import Booking
 from train.models import Station
 from django.contrib.auth.forms import UserChangeForm
@@ -76,6 +78,8 @@ def profile_request(request):
     user = request.user
     bus_bookings = Booking.objects.filter(user=user).order_by('-date_booked')
     tour_bookings = TourBooking.objects.filter(user=user)
+    train_bookings = BookingTrain.objects.filter(user=user).order_by('-date_booked')
+    flight_bookings = fBooking.objects.filter(user=user).order_by('-date_booked')
     today = date.today()
     now = datetime.now().time()
     context = {}
@@ -92,6 +96,8 @@ def profile_request(request):
     context = {
         'bus_bookings': bus_bookings,
         'tour_bookings': tour_bookings,
+        'train_bookings':train_bookings,
+        'flight_bookings':flight_bookings,
         'today': today,
         'now': now,
     }

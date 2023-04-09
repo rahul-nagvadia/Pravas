@@ -25,7 +25,11 @@ class TourBooking(models.Model):
     date = models.DateTimeField(default=timezone.now)
     num_passengers = models.PositiveIntegerField(default=1)
 
-class Feedback(models.Model):
-    tour = models.ForeignKey(
-        Tour, on_delete=models.CASCADE)
-    message = models.TextField()
+
+class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
+    

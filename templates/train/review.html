@@ -65,9 +65,10 @@
                     <p class="card-text">To: {{destination}} -- {{departure_time}}</p>
                 </div>
                 <form action="book" method="POST">
+                    {% csrf_token %}
                     <label for="Person"><h5>Person:</h5></label><input type="number" name="persons" />
                     <input type="text" value="{{coachAllocation.id}}" name="coachAllocation_id" hidden>
-                    <input type="date" value="{{date_booked}}" name="date_booked" hidden >
+                    <input type="date" value="{{date_booked_format}}" name="date_booked" hidden >
                     <input type="submit" class="btn  search-div ml-3" value="Book Now">
                 </form>
             </div>

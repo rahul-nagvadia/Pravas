@@ -102,11 +102,10 @@
             <div class="carousel-caption d-none d-md-block">
               <h5>{{tour.name}}</h5>
               <p>{{tour.description}}</p>
-              <form action="../tours/see_tour" method="POST">
+              <form action="{% url 'tour:see_tour' tour_id=tour.id %}" method="POST">
                 {% csrf_token %}
-                <input type="text" value="{{tour.id}}" name="tour_id" hidden />
                 <input type="submit" value="See" />
-              </form>
+            </form>            
             </div>
           </div>
           {% endfor %}

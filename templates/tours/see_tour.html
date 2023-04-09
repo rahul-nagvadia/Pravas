@@ -96,11 +96,11 @@
     {% for place in destination %}
     <div class="destination-div">
       <div class="destination">
-        <img
-          src="../{{place.image}}"
-          class="destination-image"
-          alt="destination-image"
-        />
+        {% if place.image %}
+        <img src="{{place.image.url}}" class="destination-image" alt="destination-image" />
+        {% else %}
+        <img src="{% static 'images/default_image.jpg' %}" class="destination-image" alt="default-image" />
+        {% endif %}
       </div>
       <div class="text">
         <div class="name">{{place.name}}</div>
@@ -108,26 +108,43 @@
       </div>
     </div>
     {% endfor %}
+
     
     <br>
-    <div class="comm">
-      Feedback:- 
-    </div>
 
-    {% for fed in feedback %}
-         {{fed.message}}
-         <br>
-         <hr>
+    {% for fb in feedback %}
+
+    <p>{{fb.user.name}} -- {{fb.text}} -- {{fb.date}}</p>
+      
     {% endfor %}
 
-    
-    <form action="comment" method="POST">
+
+    <h2>Comments</h2>
+    <form action="../comment_view" method="post">
       {% csrf_token %}
       <input type="text" value="{{tour.id}}" name="tour_id" hidden />
-      <label for="comments">Comment:</label>
-      <textarea name="comnts"></textarea>
-      <button type="submit">Submit</button>
+      <input type="text" name="comment">
+      <input type="submit">
     </form>
+
+
+    {% if messages %} {% for message in messages %}
+    <div
+      class="messages alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} {% endif %}
+    
 
     <script>
       const today = new Date().toISOString().split("T")[0];
@@ -144,6 +161,7 @@
         }
         return true;
       }
+      
     </script>
 
     <script
@@ -163,3 +181,4 @@
     ></script>
   </body>
 </html>
+
