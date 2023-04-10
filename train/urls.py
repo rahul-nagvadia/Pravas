@@ -7,4 +7,5 @@ urlpatterns = [
     path('search', views.search_view),
     path('select', views.select_view),
     path('book', views.book_view),
+    path('cancel_booking', views.cancel_booking),
 ]

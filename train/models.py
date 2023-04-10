@@ -62,7 +62,7 @@ class SeatAllocation(models.Model):
     seat = models.ManyToManyField(Seat)
 
     def __str__(self):
-        return f"{self.coachAllocation} - {self.seat}"
+        return f"{self.coachAllocation}"
 
 
 class RunDays(models.Model):

@@ -191,7 +191,7 @@
               <b>{{booking.train_schedule.train_number}} -- {{booking.train_schedule.name}}</b>
             </div>
             <div>Date: <b>{{booking.date_booked}}</b></div>
-            <div>Coach Number: <b> {{booking.seat_allocation.coachAllocation.type}}</b></div>
+            <div>Coach Number: <b> {{booking.seat_allocation.coachAllocation}}</b></div>
             <div>
               <form method="POST" action="../train/cancel_booking">
                 {% csrf_token %}

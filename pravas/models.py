@@ -13,3 +13,6 @@ class user(models.Model):
 
 class City(models.Model):
     city_name = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return f"{self.city_name}"

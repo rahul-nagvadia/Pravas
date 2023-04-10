@@ -3,6 +3,7 @@ from .models import Destination, Tour, TourBooking, Comment
 from pravas.models import user
 from django.contrib import messages
 from django.http import HttpResponse
+import datetime
 from django.template.loader import render_to_string
 
 def see_tour(request, tour_id):
@@ -43,7 +44,8 @@ def comment_view(request):
         tour = Tour.objects.get(id=tour_id)
         user = request.user
         comment = request.POST["comment"]
-        feedback = Comment(user=user, tour=tour, text=comment)
+        current_datetime = datetime.datetime.now()
+        feedback = Comment(user=user, tour=tour, text=comment, date=current_datetime)
         feedback.save()
         return redirect("tour:see_tour", tour_id=tour_id)
     

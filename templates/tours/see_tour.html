@@ -20,7 +20,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg my-navbar">
-      <a class="navbar-brand" href="../pravas" style="color: black">PRAVAS</a>
+      <a class="navbar-brand" href="../../pravas" style="color: black">PRAVAS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -66,32 +66,45 @@
         </ul>
       </div>
     </nav>
-    <div class="tour_name">
-      {{tour.name}}
-    </div>
-    
-    <hr />
-    <h3>Tour Description:</h3><br>
-    <h4>{{tour.description}}</h4>
-    <br>
-    <hr />
-    <br>
 
-    <div class="pricee">
-    <h3>Price:-   <span>{{tour.price}}</span></h3>
-    </div>
-    <br>  
-    <hr />
+      <div class="tour_name">
+        {{tour.name}}
+      </div>
+      
+      <hr />
+      <h3>Tour Description:</h3><br>
+      <h4>{{tour.description}}</h4>
+      <br>
+      <hr />
+      <br>
+  
+      <div class="pricee">
+      <h3>Price:-   <span>{{tour.price}}</span></h3>
+      </div>
+      <br>  
+      <hr />
+
     <div class="booking-form">
-      <form action="book_tour" method="POST" onsubmit="return validateForm()">
+      <form action="../book_tour" method="POST" onsubmit="return validateForm()">
         {% csrf_token %}
-        <input type="text" value="{{tour.id}}" name="tour_id" hidden />
-        Date: <input type="date" name="date_booked" /> Number of Passenger:
-        <input type="number" name="number_of_pass" />
-        <input type="submit" value="BOOK" />
-        
+        <input class="form-control" type="text" value="{{tour.id}}" name="tour_id" hidden />
+
+        <div class="d-flex">
+        <div class="p-2 form-group">
+          <input class="form-control" type="date" name="date_booked" />
+        </div>
+
+        <div class="p-2 form-group">
+           <input class="form-control" type="number" name="number_of_pass" placeholder="Number of Passenger"/>
+        </div>
+      
+      <div class="p-2 form-group">
+        <input class="search-div form-control" type="submit" value="BOOK" />
+      </div>
+    </div>
       </form>
     </div>
+
     <h2 class="heading"><span></span>Destinations Details</h2>
     {% for place in destination %}
     <div class="destination-div">
@@ -112,20 +125,32 @@
     
     <br>
 
-    {% for fb in feedback %}
-
-    <p>{{fb.user.name}} -- {{fb.text}} -- {{fb.date}}</p>
-      
-    {% endfor %}
 
 
-    <h2>Comments</h2>
-    <form action="../comment_view" method="post">
-      {% csrf_token %}
-      <input type="text" value="{{tour.id}}" name="tour_id" hidden />
-      <input type="text" name="comment">
-      <input type="submit">
-    </form>
+    <div class="feedback container">
+
+      <h2>Comments</h2>
+      {% for fb in feedback %}
+
+      <div class="d-flex comments">
+        <div class="p-2">
+          {{fb.text}}
+        </div>
+        <div class="p-2 ml-auto">
+          {{fb.user.username}} --  {{fb.date}}
+        </div>
+      </div>
+        
+      {% endfor %}
+      <form action="../comment_view" method="post">
+        {% csrf_token %}
+        <input type="text" value="{{tour.id}}" name="tour_id" hidden />
+        <div class="form-group">
+          <input class="form-control" type="text" name="comment" placeholder="Add comment">
+        </div>
+        <input class="form-control search-div" type="submit" value="Post" />
+      </form>
+    </div>
 
 
     {% if messages %} {% for message in messages %}

@@ -18,9 +18,14 @@ class Bus(models.Model):
         if self.source == self.destination:
             raise ValidationError("Source and Destination can't be same")
 
+    def __str__(self):
+        return f"{self.source} - {self.destination}"
 
 class Seat(models.Model):
     seat_number = models.IntegerField()
+    
+    def __str__(self):
+        return f"{self.seat_number}"
 
 
 class Booking(models.Model):
@@ -29,3 +34,6 @@ class Booking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     date_booked = models.DateField()
+    
+    def __str__(self):
+        return f"{self.bus} -- {self.user.username}"

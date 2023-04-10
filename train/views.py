@@ -131,4 +131,12 @@ def book_view(request):
         else:
             messages.error(request, 'Not enough available seats')
             return redirect("pravas:home")
+        
 
+def cancel_booking(request):
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        booking = BookingTrain.objects.get(id=booking_id)
+        booking.delete()
+        messages.success(request, 'Booking is canceled  ')
+        return redirect("pravas:profile")
