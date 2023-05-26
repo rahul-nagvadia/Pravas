@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/83c51c6793.js"
-      crossorigin="anonymous"
-    ></script>
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'pravas/css/styles.css'%}" />
-    <style>
-      .innerbox{
-        z-index: 10;
-        opacity: 90%;
-      }
-      .title{
-        z-index: 5;
-      }
-    </style>
-    <title>Login | PRAVAS</title>
-  </head>
-  <body>
-    
-    <div class="full-height d-flex justify-content-center">
-      <div class="title">
-        <h1>PRAVAS</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/83c51c6793.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  {%load static%}
+  <link rel="stylesheet" href="{%static 'pravas/css/login.css'%}" />
+  <title>Login | PRAVAS</title>
+</head>
+
+<body>
+
+  <div class="outer-section">
+    <div class="middle-section">
+      <div class="inner-section carousel-section">
+        <div class="carousel-inner">
+          <div class="carousel-slide">
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ZFWA6pxX4H.json" background="transparent"
+              speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+            <p>
+              Immerse yourself in the sights, sounds, and flavors of cultures of GUJRAT as you wander through bustling
+              markets, explore historical landmarks, and engage with local communities.
+            </p>
+          </div>
+          <div class="carousel-slide">
+
+          </div>
+          <div class="carousel-slide">
+
+          </div>
+        </div>
       </div>
-      <div class="innerbox">
-        <div class="innerbox-child">
-          <h2>Login</h2>
-        </div>
-        <div class="innerbox-child d-flex flex-row">
-          <form method="POST" action="" class="login-form">
-            {% csrf_token %} {{ login_form.as_p }}
-            <button class="btn" type="submit">Login</button>
-          </form>
-        </div>
-        <div class="innerbox-child">
-          <p class="text-center">
-            Don't have an account?
-            <a class="link" href="register"
-              ><b><u>Create an account</u></b></a
-            >.
-          </p>
-        </div>
+      <div class="inner-section form-section">
+        <h2 class="title">PRAVAS</h2>
+        <form method="POST" action="" class="login-form">
+          {% csrf_token %} {{ login_form.as_p }}
+          <button type="submit">Login</button>
+        </form>
+        <p class="text-center">
+          Don't have an account?
+          <a class="link" href="register"><b><u>Create an account</u></b></a>.
+        </p>
       </div>
     </div>
+  </div>
 
+  <!-- <div class="full-height d-flex justify-content-center">
+    <div class="title">
+      <h1>PRAVAS</h1>
+    </div>
+    <div class="innerbox">
+      <div class="innerbox-child">
+        <h2>Login</h2>
+      </div>
+      <div class="innerbox-child d-flex flex-row">
+        <form method="POST" action="" class="login-form">
+          {% csrf_token %} {{ login_form.as_p }}
+          <button class="btn" type="submit">Login</button>
+        </form>
+      </div>
+      <div class="innerbox-child">
+        <p class="text-center">
+          Don't have an account?
+          <a class="link" href="register"><b><u>Create an account</u></b></a>.
+        </p>
+      </div>
+    </div>
+  </div> -->
+  <!-- 
     <div class="icons plane1">
       <i class="fa-solid fa-plane"></i>
     </div>
@@ -80,21 +97,17 @@
     </div>
     <div class="icons bus3">
       <i class="fa-solid fa-bus-simple"></i>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    </div> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="{%static 'pravas/js/login.js'%}"></script>
+</body>
+
 </html>
