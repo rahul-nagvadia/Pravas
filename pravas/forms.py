@@ -5,17 +5,13 @@ from django.contrib.auth.models import User
 
 class UserRegistration(UserCreationForm):
     firstname = forms.CharField(
-        label='First Name', max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First name'}))
+        label='First Name', max_length=100, required=True)
     lastname = forms.CharField(
-        label='Last Name', max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last name'}))
-    username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Username'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(
-        attrs={'class': 'form-control', 'placeholder': 'Email'}))
-    password1 = forms.CharField(required=True, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'Password'}))
-    password2 = forms.CharField(required=True, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'Confirm password'}))
+        label='Last Name', max_length=100, required=True)
+    username = forms.CharField(max_length=100, required=True)
+    email = forms.EmailField(required=True)
+    password1 = forms.CharField(label='Password', required=True)
+    password2 = forms.CharField(label='Confirm Password', required=True)
 
     class Meta:
         model = User

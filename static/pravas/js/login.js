@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
   var inputs = document.querySelectorAll(
-    "input[type=text], input[type=password]"
+    "input[type=text], input[type=password], input[type=email]"
   );
   for (i = 0; i < inputs.length; i++) {
     var inputEl = inputs[i];

@@ -33,6 +33,8 @@ body {
 
 .carousel-section {
   background-color: #5f9df7;
+  color: #fff7e9;
+  text-align: center;
   flex-basis: 55%;
 }
 
@@ -49,7 +51,6 @@ body {
 
 .title {
   flex-basis: 25%;
-  font-family: Port Lligat Sans;
   font-size: 5rem;
   margin-top: 2rem;
 }
@@ -71,7 +72,8 @@ form {
 }
 
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type="email"] {
   height: 2.5rem;
   margin: 0 0 1.15rem;
   width: 100%;
@@ -84,7 +86,8 @@ input[type="text"] {
 }
 
 input[type="password"]:required,
-input[type="text"]:required {
+input[type="text"]:required,
+input[type="email"]:required {
   box-shadow: none;
   outline: none;
 }
@@ -128,25 +131,35 @@ a:focus {
 }
 
 .carousel-inner {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  padding: 100px;
-  color: #ffffff;
-  font-size: 1.3rem;
-  letter-spacing: 0.05rem;
+  height: inherit;
+  width: inherit;
 }
 
 .carousel-slide {
-  height: 100%;
-  width: 100%;
+  height: inherit;
+  width: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 3rem;
+  font-size: 1.2rem;
+}
+
+.quote {
+  font-size: 2.5rem;
+}
+
+.animation {
+  width: 400px;
+  height: 400px;
 }
 
 @media (max-width: 768px) {
+  .outer-section {
+    padding: 3rem 2rem;
+  }
+
   .middle-section {
     flex-direction: column;
   }
@@ -161,5 +174,31 @@ a:focus {
 
   .form-section {
     flex-basis: 55%;
+  }
+
+  .title {
+    flex-basis: 25%;
+    font-size: 3rem;
+    margin-top: 1rem;
+  }
+
+  form {
+    padding: 4%;
+    width: 60%;
+    font-size: 1.2rem;
+  }
+
+  .carousel-slide {
+    padding: 0 1rem;
+    font-size: 0.7rem;
+  }
+
+  .quote {
+    font-size: 1rem;
+  }
+
+  .animation {
+    width: 200px;
+    height: 200px;
   }
 }
