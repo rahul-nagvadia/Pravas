@@ -6,12 +6,15 @@ section {
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-snap-type: y mandatory;
 }
+
 .land-page {
   position: relative;
 }
+
 .pravas {
   position: absolute;
   top: 30%;
@@ -32,14 +35,17 @@ html {
   left: 85%;
   font-size: 10rem;
 }
+
 .feather {
   top: 30%;
   left: 20%;
   font-size: 5rem;
 }
+
 .carousel-item {
   position: relative;
 }
+
 .my-navbar {
   position: absolute;
   z-index: 10;
@@ -54,6 +60,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
 .tour_image {
   object-fit: cover;
 }
@@ -62,20 +69,25 @@ section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
+
 .home-section {
   height: 100%;
 }
+
 .navbar-text {
   color: #020202;
 }
+
 .nav-link {
   color: black;
 }
+
 .nav-link:hover {
   color: #913175;
   transition: all 0.3s ease;
   transform: scale(1.05);
 }
+
 .main-section {
   width: 70%;
   height: 400px;
@@ -85,18 +97,22 @@ section {
   border-radius: 30px;
   margin-top: 150px;
 }
+
 .button-section {
   width: 50%;
 }
+
 .outer-section {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .button-section {
   margin-bottom: 50px;
 }
+
 .mod-button {
   border: 0;
   height: 70px;
@@ -105,6 +121,7 @@ section {
   background-color: #9e4784;
   border-radius: 10px;
 }
+
 .mod-button:hover {
   background-color: #e9e8e8;
   color: #913175;
@@ -112,6 +129,7 @@ section {
   transition: all 0.3s ease;
   transform: scale(1.1);
 }
+
 button.mod-button:nth-of-type(1n):hover::before {
   content: "bus";
   display: inline-block;
@@ -121,6 +139,7 @@ button.mod-button:nth-of-type(1n):hover::before {
   border-radius: 5px;
   position: absolute;
 }
+
 button.mod-button:nth-of-type(2n):hover::before {
   content: "train";
   display: inline-block;
@@ -130,6 +149,7 @@ button.mod-button:nth-of-type(2n):hover::before {
   border-radius: 5px;
   position: absolute;
 }
+
 button.mod-button:nth-of-type(3n):hover::before {
   content: "plane";
   display: inline-block;
@@ -139,19 +159,23 @@ button.mod-button:nth-of-type(3n):hover::before {
   border-radius: 5px;
   position: absolute;
 }
+
 .travel-form {
   width: 100%;
 }
+
 .search-div {
   width: 100px;
   border: 2px solid #913175;
 }
+
 .search-div:hover {
   color: #913175;
   box-shadow: 0 0 3px #913175;
   transition: all 0.2s ease;
   transform: scale(1.1);
 }
+
 .messages {
   width: 30%;
   position: absolute;
@@ -169,17 +193,17 @@ button.mod-button:nth-of-type(3n):hover::before {
 
 /* icons-section */
 .icons-section {
- 
 }
+
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .icons-section {
-  flex: 1; 
-  height: 100%; 
+  flex: 1;
+  height: 100%;
   position: relative;
 }
 
@@ -231,12 +255,12 @@ button.mod-button:nth-of-type(3n):hover::before {
   font-size: 3rem;
   top: 10%;
   left: 20%;
-  animation: horizontalfloat 2s infinite;font-size: 3rem;
+  animation: horizontalfloat 2s infinite;
+  font-size: 3rem;
   top: 10%;
   left: 20%;
   animation: horizontalfloat 2s infinite;
 }
-
 
 #train > *:nth-child(1) {
   font-size: 6rem;
@@ -265,7 +289,6 @@ button.mod-button:nth-of-type(3n):hover::before {
   left: 30%;
   animation: horizontalfloat 5s infinite;
 }
-
 
 #flight > *:nth-child(1) {
   font-size: 6rem;
@@ -302,14 +325,15 @@ button.mod-button:nth-of-type(3n):hover::before {
   animation: horizontalfloat 2s infinite;
 }
 
-
 @keyframes verticalfloat {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -319,9 +343,11 @@ button.mod-button:nth-of-type(3n):hover::before {
   0% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(-10px);
   }
+
   100% {
     transform: translateX(0);
   }
