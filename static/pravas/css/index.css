@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Port Lligat Sans;
+  overflow-x: hidden;
 }
 
 .home-section {
@@ -84,20 +85,47 @@ a:hover {
   display: block;
 }
 
-.destination {
-  width: 70%;
-  justify-items: center;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-auto-flow: dense;
-}
+/* ////////////Landing Section///////////// */
 
 span {
-  border-bottom: solid 3px #ff731d;
+  text-decoration: underline #f79540;
 }
 
-/* ////////////Landing Section///////////// */
+@keyframes floatAnimation1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
 
 .landing {
   width: 100%;
@@ -106,6 +134,7 @@ span {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: -35px;
 }
 
 .greeting {
@@ -150,6 +179,7 @@ span {
   background-size: cover;
   background-image: url(../../images/tri1.png);
   rotate: 20deg;
+  animation: floatAnimation1 2s infinite;
 }
 
 .tri2 {
@@ -162,6 +192,7 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(../../images/tri2.png);
+  animation: floatAnimation2 3s infinite;
   rotate: 45deg;
 }
 
@@ -175,5 +206,133 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(../../images/tri3.png);
+  animation: floatAnimation3 3s infinite;
   rotate: 50deg;
+}
+
+.square {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 15px;
+  color: #000000;
+}
+
+.square > p {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.photo {
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sq-1 {
+  box-shadow: -30px -30px #fc4f00, 1px 1px 5px #c9c9c9;
+  top: 100px;
+  right: 250px;
+  rotate: 10deg;
+  animation: floatAnimation3 3s infinite;
+}
+
+.sq-1 > .photo {
+  background-image: url(../../images/gujrat.jpg);
+}
+
+.sq-2 {
+  box-shadow: 40px 30px #f79540, 1px 1px 5px #c9c9c9;
+  bottom: 400px;
+  right: 400px;
+  rotate: -20deg;
+  animation: floatAnimation3 3s infinite;
+}
+
+.sq-2 > .photo {
+  background-image: url(../../images/manali.jpg);
+}
+
+.sq-3 {
+  box-shadow: -30px -30px #b71375, 1px 1px 5px #c9c9c9;
+  bottom: 150px;
+  right: 200px;
+  rotate: 25deg;
+  font-size: 0.8rem;
+  animation: floatAnimation3 2s infinite;
+}
+
+.sq-3 > .photo {
+  background-image: url(../../images/mahabalipuram.jpg);
+}
+
+.searching {
+  z-index: 2;
+  width: 60%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -70px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  color: #1746a2;
+}
+
+.searching > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-part {
+  width: 25%;
+  font-size: 2rem;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.right-part {
+  width: 70%;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.date > .left-part {
+  color: #ff731d;
+}
+
+.change {
+  color: #f79540;
+}
+
+button {
+  background: #ff731d;
+  border: none;
+  color: #fff7e9;
+  padding: 1.5rem;
+  border-radius: 4px;
+  font-size: 1.5rem;
+}
+
+button:hover,
+button:focus {
+  background: #fb9250;
+  cursor: pointer;
+  outline: none;
 }
