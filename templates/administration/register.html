@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'administration/css/signup-login.css'%}" />
+    <script src="https://kit.fontawesome.com/83c51c6793.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        form {
+            font-size: 1.2rem;
+            margin-top: -150px;
+        }
+
+        input[type="password"],
+        input[type="text"],
+        input[type="email"] {
+            height: 2rem;
+            margin: 0 0 -1rem;
+            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 2px solid #ff731d;
+            box-sizing: border-box;
+            outline: none;
+            color: #1746a2;
+        }
+    </style>
+    <title>Register | PRAVAS</title>
+</head>
+
+<body>
+
+    <div class="outer-section">
+        <div class="middle-section">
+            <div class="inner-section form-section">
+                <h2 class="title">PRAVAS</h2>
+                <form method="POST" action="">
+                    {% csrf_token %} {{register_form.as_p}}
+                    <button class="btn " type="submit">Register</button>
+                </form>
+                <p class="text-center">
+                    If you already have an account,
+                    <a class="link" href="login"><b><u>Login</u></b></a>.
+                </p>
+            </div>
+            <div class="inner-section carousel-section">
+                <div class="carousel-inner">
+                    <div class="carousel-slide">
+                        <div class="animation">
+                            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_mdbdc5l7.json"
+                                background="transparent" speed="1" loop autoplay></lottie-player>
+                        </div>
+                        <h1>
+                            <i class="fa-solid fa-quote-left"></i><span class="quote"><strong> Journey Masters
+                                </strong></span><i class="fa-solid
+                fa-quote-right"></i>
+                        </h1>
+
+                        <p>
+                            Get ready to embark on an extraordinary journey that will ignite your imagination, inspire
+                            your soul, and
+                            create lifelong memories. Together, let's explore the world, one unforgettable experience at
+                            a time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="{%static 'administration/js/login.js'%}"></script>
+</body>
+
+</html>
