@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet" />
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'vacation_package/css/package.css'%}" />
+    <script src="https://kit.fontawesome.com/83c51c6793.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Package-List | PRAVAS</title>
+</head>
+
+<body>
+    <div class="home-section">
+        <div class="navbar">
+            <ul>
+                <li class="logo">
+                    <p>PRAVAS</p>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="links dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-solid fa-user"></i></a>
+                    <ul class="dropdown-menu ">
+                        <li><i class="fa-solid fa-address-card"></i> <a href="profile">Profile</i></a></li>
+                        <li><i class="fa-solid fa-right-from-bracket"></i> <a href="logout">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="links">
+                    <a href="login">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="card-deck">
+        {% for package in packages %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../../static/images/{{package.folder_id}}/{{ package.folder_id|first }}/"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ package.name }}</h5>
+                <h2 class="card-title">₹{{ package.price }}</h2>
+                <p class="card-text">{{ package.overview }}</p>
+                <a href="#" class="btn btn-primary">
+                    <form action="package_details" method="POST">
+                        {% csrf_token %}
+                        <input type="number" value={{package.id}} name="package_id" hidden>
+                        <input type="submit" value="See More">
+                    </form>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No packages available.</p>
+        {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

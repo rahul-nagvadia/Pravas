@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Port+Lligat+Sans&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Port Lligat Sans;
+  overflow-x: hidden;
+}
+
+.home-section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 30px 0;
+  color: #ff731d;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  padding: 0;
+  height: 60px;
+}
+
+a {
+  padding: 0 10px;
+  color: #ff731d;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #1746a2;
+  text-decoration: underline;
+}
+
+.links {
+  margin-left: auto;
+  font-size: 1.8rem;
+  margin-right: 10px;
+  color: #ff731d;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  right: 0;
+  left: auto;
+  text-align: right;
+  border: none;
+  font-size: 1.5rem;
+  color: #ff731d;
+  width: 100px !important;
+  background: none;
+  margin-top: 0;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu li {
+  margin-bottom: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
