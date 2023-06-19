@@ -23,6 +23,8 @@ body {
   align-items: baseline;
   padding: 30px 0;
   color: #ff731d;
+  position: absolute;
+  top: 0;
 }
 
 .logo {
@@ -132,13 +134,11 @@ span {
   color: #1746a2;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  margin-top: -35px;
 }
 
 .greeting {
-  flex-basis: 0.5;
+  flex-basis: 50%;
   text-align: center;
   font-weight: 900;
   font-size: 10rem;
@@ -146,6 +146,7 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50vw;
 }
 
 .landing-text > h1 {
@@ -159,15 +160,15 @@ span {
 }
 
 .landing-left {
-  flex-basis: 0.25;
   position: relative;
-  z-index: -10;
+  height: 100%;
+  flex-basis: 25%;
 }
 
-.lading-right {
-  flex-basis: 0.25;
+.landing-right {
   position: relative;
-  z-index: -10;
+  height: 100%;
+  flex-basis: 25%;
 }
 
 .landing-animation {
@@ -176,10 +177,10 @@ span {
 
 .tri1 {
   position: absolute;
+  right: 50px;
+  top: 200px;
   width: 200px;
   height: 200px;
-  bottom: 200px;
-  right: 350px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -192,8 +193,6 @@ span {
   position: absolute;
   width: 200px;
   height: 200px;
-  bottom: 600px;
-  right: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -204,10 +203,10 @@ span {
 
 .tri3 {
   position: absolute;
+  right: 10px;
+  top: 10px;
   width: 200px;
   height: 200px;
-  bottom: 20px;
-  right: 100px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -245,8 +244,8 @@ span {
 
 .sq-1 {
   box-shadow: -30px -30px #fc4f00, 1px 1px 5px #c9c9c9;
-  top: 100px;
-  right: 250px;
+  right: 0px;
+  top: 600px;
   rotate: 10deg;
   animation: floatAnimation3 3s infinite;
 }
@@ -257,8 +256,8 @@ span {
 
 .sq-2 {
   box-shadow: 40px 30px #f79540, 1px 1px 5px #c9c9c9;
-  bottom: 400px;
-  right: 400px;
+  left: 100px;
+  top: 600px;
   rotate: -20deg;
   animation: floatAnimation3 3s infinite;
 }
@@ -269,8 +268,8 @@ span {
 
 .sq-3 {
   box-shadow: -30px -30px #b71375, 1px 1px 5px #c9c9c9;
-  bottom: 150px;
-  right: 200px;
+  left: 5px;
+  top: 400px;
   rotate: 25deg;
   font-size: 0.8rem;
   animation: floatAnimation3 2s infinite;
@@ -280,16 +279,28 @@ span {
   background-image: url(../../images/mahabalipuram.jpg);
 }
 
+.landing-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
 .searching {
   z-index: 2;
   width: 60%;
   padding: 10px;
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: row;
-
   justify-content: space-around;
   align-items: center;
-  margin-top: -70px;
   margin-bottom: 10px;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -361,8 +372,8 @@ button:focus {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: 80vw;
-  height: 120vh;
+  width: 75vw;
+  height: 80vh;
   margin-top: 100px;
 }
 

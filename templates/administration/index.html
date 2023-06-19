@@ -19,90 +19,92 @@
 
 <body>
     <div class="home-section">
-        <div class="navbar">
-            <ul>
-                <li class="logo">
-                    <p>PRAVAS</p>
-                </li>
-                {% if user.is_authenticated %}
-                <li class="links dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-solid fa-user"></i></a>
-                    <ul class="dropdown-menu ">
-                        <li><i class="fa-solid fa-address-card"></i> <a href="profile">Profile</i></a></li>
-                        <li><i class="fa-solid fa-right-from-bracket"></i> <a href="logout">Logout</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="links">
-                    <a href="login">Login</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-        <div class="landing">
-            <div class="landing-left">
-                <div class="tri1"></div>
-                <div class="tri3"></div>
-                <div class="square sq-1">
-                    <div class="photo"></div>
-                    <p>Gujrat</p>
-                </div>
+        <div class="landing-section">
+            <div class="navbar">
+                <ul>
+                    <li class="logo">
+                        <p>PRAVAS</p>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="links dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-solid fa-user"></i></a>
+                        <ul class="dropdown-menu ">
+                            <li><i class="fa-solid fa-address-card"></i> <a href="profile">Profile</i></a></li>
+                            <li><i class="fa-solid fa-right-from-bracket"></i> <a href="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="links">
+                        <a href="login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="greeting">
-                <div class="landing-text">
-                    <h1>Discover the <span>best places</span></h1>
-                    <h1>to <span>enjoy</span> your next <span>vacation</span></h1>
-                    </>
-                    <h2>We always make our customers happy by providing many choices</h2>
+            <div class="landing">
+                <div class="landing-left">
+                    <div class="tri1"></div>
+                    <div class="tri3"></div>
+                    <div class="square sq-1">
+                        <div class="photo"></div>
+                        <p>Gujrat</p>
+                    </div>
                 </div>
-                <div class="landing-animation">
-                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_0ilhlmpl.json"
-                        background="transparent" speed="1" style="width: 600px; height: 600px;" loop
-                        autoplay></lottie-player>
-                </div>
+                <div class="greeting">
+                    <div class="landing-text">
+                        <h1>Discover the <span>best places</span></h1>
+                        <h1>to <span>enjoy</span> your next <span>vacation</span></h1>
+                        </>
+                        <h2>We always make our customers happy by providing many choices</h2>
+                    </div>
+                    <div class="landing-animation">
+                        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_0ilhlmpl.json"
+                            background="transparent" speed="1" style="width: 600px; height: 600px;" loop
+                            autoplay></lottie-player>
+                    </div>
 
-            </div>
-            <div class="landing-right">
-                <div class="tri2"></div>
-                <div class="square sq-2">
-                    <div class="photo"></div>
-                    <p>Manali</p>
                 </div>
-                <div class="square sq-3">
-                    <div class="photo"></div>
-                    <p>Mahabalipuram</p>
-                </div>
-            </div>
-        </div>
-        <div class="searching">
-            <div class="explore-button">
-                <button type="submit">Explore Now</button>
-            </div>
-            <div class="destination">
-                <div class="left-part">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="right-part">
-                    <p>Destination</p>
-                    <p class="change">Manali, UK</p>
+                <div class="landing-right">
+                    <div class="tri2"></div>
+                    <div class="square sq-2">
+                        <div class="photo"></div>
+                        <p>Manali</p>
+                    </div>
+                    <div class="square sq-3">
+                        <div class="photo"></div>
+                        <p>Mahabalipuram</p>
+                    </div>
                 </div>
             </div>
-            <div class="price">
-                <div class="left-part">
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
+            <div class="searching">
+                <div class="explore-button">
+                    <button type="submit">Explore Now</button>
                 </div>
-                <div class="right-part">
-                    <p>Average Price</p>
-                    <p class="change">₹5k - ₹10k</p>
+                <div class="destination">
+                    <div class="left-part">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="right-part">
+                        <p>Destination</p>
+                        <p class="change">Manali, UK</p>
+                    </div>
                 </div>
-            </div>
-            <div class="date">
-                <div class="left-part">
-                    <i class="fa-solid fa-calendar-days"></i>
+                <div class="price">
+                    <div class="left-part">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <div class="right-part">
+                        <p>Average Price</p>
+                        <p class="change">₹5k - ₹10k</p>
+                    </div>
                 </div>
-                <div class="right-part">
-                    <p>Date</p>
-                    <p class="change">Jun, 10 Nov</p>
+                <div class="date">
+                    <div class="left-part">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="right-part">
+                        <p>Date</p>
+                        <p class="change">Jun, 10 Nov</p>
+                    </div>
                 </div>
             </div>
         </div>
