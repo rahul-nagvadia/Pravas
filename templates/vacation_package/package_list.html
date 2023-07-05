@@ -39,29 +39,32 @@
                 {% endif %}
             </ul>
         </div>
-    </div>
-    <div class="card-deck">
+
+
         {% for package in packages %}
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../../static/images/{{package.folder_id}}/{{ package.folder_id|first }}/"
-                alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ package.name }}</h5>
-                <h2 class="card-title">₹{{ package.price }}</h2>
-                <p class="card-text">{{ package.overview }}</p>
-                <a href="#" class="btn btn-primary">
+        <div class="package-card">
+            <div class="package-image"
+                style="background-image: url('../../static/images/{{package.images_folder}}/1.jpg');"></div>
+            <div class="package-description">
+                <div class="package-name">{{ package.name }}</div>
+                <div class="package-price">₹{{ package.price }}/-</div>
+                <div class="package-overview">{{ package.overview }}</div>
+                <div class="pacakge-see">
                     <form action="package_details" method="POST">
                         {% csrf_token %}
                         <input type="number" value={{package.id}} name="package_id" hidden>
-                        <input type="submit" value="See More">
+                        <input type="submit" class="see-button" value="See More">
                     </form>
-                </a>
+                </div>
             </div>
         </div>
         {% empty %}
         <p>No packages available.</p>
         {% endfor %}
     </div>
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

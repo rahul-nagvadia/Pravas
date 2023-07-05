@@ -39,7 +39,26 @@
                 {% endif %}
             </ul>
         </div>
+        <div class="package_detail">
+            <div class="package-name">{{package.name}}</div>
+            <div class="package-overview">{{package.overview}}</div>
+            <div class="package-inclusion"></div>
+            <div class="package-theme">
+                {{package.themes}}
+            </div>
+            <div class="package-price">₹{{package.price}}/-</div>
+            <div class="package-days">{{package.days}}</div>
+            <div class="things">
+                <div class="inclusions">
+                    {{package.inclusions_things}}
+                </div>
+                <div class="exclusions">
+                    {{package.exclusions_things}}
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

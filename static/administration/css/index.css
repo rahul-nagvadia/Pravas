@@ -386,7 +386,7 @@ button:focus {
   justify-content: space-between;
 }
 .item:hover {
-  box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.5), 15px 10px #f79540;
+  box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.5), 9px 10px #f79540;
   padding: 50px;
 }
 

@@ -74,6 +74,7 @@ class Package(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     days = models.ManyToManyField(DaySchedule, related_name="days")
     price = models.IntegerField()
+    total_images = models.IntegerField(null=True)
     images_folder = models.IntegerField(null=True)
     inclusions = models.ManyToManyField(Inclusions, related_name="inclusion")
     themes = models.ManyToManyField(Theme, related_name="themes")

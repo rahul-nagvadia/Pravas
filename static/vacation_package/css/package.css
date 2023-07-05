@@ -8,6 +8,27 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  padding: 0;
+  height: 60px;
+}
+
+a {
+  padding: 0 10px;
+  color: #ff731d;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #1746a2;
+  text-decoration: underline;
+}
+
 .home-section {
   width: 100vw;
   display: flex;
@@ -28,27 +49,6 @@ body {
 .logo {
   font-size: 2.5rem;
   font-weight: 600;
-}
-
-ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  width: 100%;
-  padding: 0;
-  height: 60px;
-}
-
-a {
-  padding: 0 10px;
-  color: #ff731d;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #1746a2;
-  text-decoration: underline;
 }
 
 .links {
@@ -83,4 +83,56 @@ a:hover {
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+.see-button {
+  background: #ff731d;
+  border: none;
+  color: #fff7e9;
+  padding: 10px;
+}
+
+.see-button:hover,
+.see-button:focus {
+  background: #fb9250;
+  cursor: pointer;
+  outline: none;
+}
+.package-card {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #1746a2;
+  margin: 20px 0;
+  border-radius: 20px;
+}
+
+.package-image {
+  width: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.package-description {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+.package-description > div {
+  margin: 10px;
+  flex-basis: 25%;
+  text-align: center;
+  padding: 10px;
+}
+
+.package-name {
+  font-size: larger;
+}
+
+.package-price {
+  font-size: x-large;
 }
