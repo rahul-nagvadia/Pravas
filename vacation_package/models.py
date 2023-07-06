@@ -70,7 +70,7 @@ class Things(models.Model):
 
 class Package(models.Model):
     name = models.CharField(max_length=100)
-    overview = models.CharField(max_length=200, null=True)
+    overview = models.CharField(max_length=1000, null=True)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     days = models.ManyToManyField(DaySchedule, related_name="days")
     price = models.IntegerField()

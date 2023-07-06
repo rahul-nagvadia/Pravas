@@ -32,5 +32,4 @@ def package_details(request):
     if request.method == "POST":
         package_id = request.POST.get("package_id")
         package = Package.objects.get(id=package_id)
-
         return render(request, 'vacation_package/package.html', {'package': package})

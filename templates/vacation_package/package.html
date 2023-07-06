@@ -39,21 +39,62 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="package_detail">
-            <div class="package-name">{{package.name}}</div>
-            <div class="package-overview">{{package.overview}}</div>
-            <div class="package-inclusion"></div>
+        <div class="package-detail">
+            <div class="package-name">
+                <div class="name">
+                    {{package.name}}
+                </div>
+                <div class="book-button">
+                    <form action="">
+                        {% csrf_token %}
+                        <input type="number" value={{package.id}} name="package_id" hidden>
+                        <input type="submit" class="see-button" value="Book">
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="package-overview"><strong>Overview:</strong> {{package.overview}}</div>
             <div class="package-theme">
-                {{package.themes}}
+                <strong>Themes:</strong>
+                {% for theme in package.themes.all %}
+                {{theme.name}},
+                {% endfor %}
+            </div>
+            <div class="package-inclusion">
+                <strong>Inclusions:</strong>
+                {% for inclusion in package.inclusions.all %}
+                {{inclusion}},
+
+                {% endfor %}
             </div>
             <div class="package-price">₹{{package.price}}/-</div>
-            <div class="package-days">{{package.days}}</div>
+            <hr>
+            {% for day_schedule in package.days.all %}
+            <div class="package-day">
+                <p> <strong> Day {{ day_schedule.day_number }} - {{ day_schedule.name }}</strong></p>
+                <p>{{day_schedule.description}}</p>
+                <p><strong><i>Activities</i></strong></p>
+                {% for activity in day_schedule.activities.all %}
+                {{activity}}
+                <br>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <hr>
             <div class="things">
                 <div class="inclusions">
-                    {{package.inclusions_things}}
+                    <div class="title">Inclusions Things</div>
+                    {% for thing in package.inclusions_things.all %}
+                    {{thing}}
+                    <br>
+                    {% endfor %}
                 </div>
                 <div class="exclusions">
-                    {{package.exclusions_things}}
+                    <div class="title">Exclusions Things</div>
+                    {% for thing in package.exclusions_things.all %}
+                    {{thing}}
+                    <br>
+                    {% endfor %}
                 </div>
             </div>
         </div>

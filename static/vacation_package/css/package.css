@@ -35,6 +35,7 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 .navbar {
@@ -90,6 +91,7 @@ a:hover {
   border: none;
   color: #fff7e9;
   padding: 10px;
+  font-size: 1.3rem;
 }
 
 .see-button:hover,
@@ -105,6 +107,7 @@ a:hover {
   border: 1px solid #1746a2;
   margin: 20px 0;
   border-radius: 20px;
+  height: 200px;
 }
 
 .package-image {
@@ -120,19 +123,87 @@ a:hover {
   width: 80%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .package-description > div {
   margin: 10px;
-  flex-basis: 25%;
   text-align: center;
   padding: 10px;
 }
 
 .package-name {
-  font-size: larger;
+  font-size: 1.3rem;
+  flex-basis: 20%;
 }
 
 .package-price {
-  font-size: x-large;
+  flex-basis: 10%;
+  font-size: 2rem;
+}
+
+.package-overview {
+  flex-basis: 80%;
+  font-size: 0.9rem;
+}
+
+.pacakge-see {
+  flex-basis: 20%;
+}
+
+@media (max-width: 1024px) {
+  .package-card {
+    width: 70%;
+    flex-direction: column;
+    height: auto;
+  }
+  .package-description {
+    width: 100%;
+    flex-direction: column;
+  }
+  .package-image {
+    height: 20%;
+  }
+}
+
+/* //////////package page//////////////// */
+
+.package-detail {
+  width: 70%;
+}
+
+.package-detail > div {
+  margin: 5px 0;
+}
+
+.package-detail > .package-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.package-day > p {
+  margin: 8px 0;
+}
+
+.package-detail > .things {
+  display: flex;
+}
+.package-detail > .things > div {
+  flex-basis: 50%;
+}
+.package-detail > .things > div > .title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.name {
+  flex: 1;
+}
+
+.book-buttion {
+  margin-left: auto;
 }
