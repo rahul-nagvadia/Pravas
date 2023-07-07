@@ -8,10 +8,13 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
+from vacation_package.models import Place, Month
 
 
 def home_view(request):
-    return render(request, "administration/index.html")
+    places = Place.objects.all
+    months = Month.objects.all
+    return render(request, "administration/index.html", {'places': places, 'months': months})
 
 
 def register_request(request):

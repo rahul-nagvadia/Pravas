@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{%static 'vacation_package/css/package.css'%}" />
     <script src="https://kit.fontawesome.com/83c51c6793.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <title>Package-List | PRAVAS</title>
+    <title>Booking | PRAVAS</title>
 </head>
 
 <body>
@@ -39,64 +39,25 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="package-detail">
-            <div class="package-name">
-                <div class="name">
-                    {{package.name}}
-                </div>
-                <div class="book-button">
-                    <form action="booking_template" method="POST">
-                        {% csrf_token %}
-                        <input type="number" value={{package.id}} name="package_id" hidden>
-                        <input type="submit" class="see-button" value="Book">
-                    </form>
-                </div>
-            </div>
-            <hr>
-            <div class="package-overview"><strong>Overview:</strong> {{package.overview}}</div>
-            <div class="package-theme">
-                <strong>Themes:</strong>
-                {% for theme in package.themes.all %}
-                {{theme.name}},
-                {% endfor %}
-            </div>
-            <div class="package-inclusion">
-                <strong>Inclusions:</strong>
-                {% for inclusion in package.inclusions.all %}
-                {{inclusion}},
+        <div class="inner-section form-section">
+            <form method="post" action="book_package" class="booking-form">
+                {% csrf_token %}
+                <input type="hidden" name="package_id" value="{{ package.id }}">
+                <div>
+                    <label for="children">Children</label>
+                    <input type="number" name="children" id="children" required>
 
-                {% endfor %}
-            </div>
-            <div class="package-price">₹{{package.price}}/-</div>
-            <hr>
-            {% for day_schedule in package.days.all %}
-            <div class="package-day">
-                <p> <strong> Day {{ day_schedule.day_number }} - {{ day_schedule.name }}</strong></p>
-                <p>{{day_schedule.description}}</p>
-                <p><strong><i>Activities</i></strong></p>
-                {% for activity in day_schedule.activities.all %}
-                {{activity}}
-                <br>
-                {% endfor %}
-            </div>
-            {% endfor %}
-            <hr>
-            <div class="things">
-                <div class="inclusions">
-                    <div class="title">Inclusions Things</div>
-                    {% for thing in package.inclusions_things.all %}
-                    {{thing}}
-                    <br>
-                    {% endfor %}
+                    <label for="adults">Adults</label>
+                    <input type="number" name="adults" id="adults" required>
                 </div>
-                <div class="exclusions">
-                    <div class="title">Exclusions Things</div>
-                    {% for thing in package.exclusions_things.all %}
-                    {{thing}}
-                    <br>
-                    {% endfor %}
+                <div>
+                    <label for="date_booked">Date Booked</label>
+                    <input type="date" name="date_booked" id="date_booked" required>
                 </div>
-            </div>
+                <div>
+                    <button type="submit">BOOK</button>
+                </div>
+            </form>
         </div>
     </div>
 

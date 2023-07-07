@@ -33,3 +33,20 @@ def package_details(request):
         package_id = request.POST.get("package_id")
         package = Package.objects.get(id=package_id)
         return render(request, 'vacation_package/package.html', {'package': package})
+
+
+def booking_template(request):
+    if request.method == "POST":
+        package_id = request.POST.get("package_id")
+        package = Package.objects.get(id=package_id)
+        return render(request, 'vacation_package/booking.html', {'package': package})
+
+
+def book_package(request):
+    if request.method == "POST":
+        user = request.user
+        package_id = request.POST.get("package_id")
+        package = Package.objects.get(id=package_id)
+        children = request.POST.get("children")
+        adults = request.POST.get("adults")
+        date_booked = request.POST.get("date_booked")

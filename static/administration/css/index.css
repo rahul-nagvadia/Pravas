@@ -295,25 +295,6 @@ span {
   z-index: 2;
   width: 60%;
   padding: 10px;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 10px;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  font-size: 1.3rem;
-  color: #1746a2;
-}
-
-.searching > * {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .left-part {
@@ -556,4 +537,44 @@ button:focus {
   margin-top: 20px;
   color: #1746a2;
   font-size: 1.2rem;
+}
+
+/* ///////////form///////////// */
+
+select {
+  border: none;
+  background: none;
+  color: #fb9250;
+}
+
+select option {
+  border: none;
+  background: none;
+  color: #1746a2;
+}
+
+form {
+  width: 100%;
+  z-index: 2;
+  width: 60%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  color: #1746a2;
+}
+
+form > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

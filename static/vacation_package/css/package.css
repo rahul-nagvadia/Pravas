@@ -207,3 +207,84 @@ a:hover {
 .book-buttion {
   margin-left: auto;
 }
+
+/* booking form  */
+
+.inner-section {
+  height: 100%;
+}
+
+.form-section {
+  background-color: #fff7e9;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+form {
+  margin-top: -60px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10%;
+  position: relative;
+  width: 100%;
+  font-family: Port Lligat Sans;
+  font-size: 1.5rem;
+}
+
+.inputs--filled {
+  background: none;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="date"] {
+  height: 2.5rem;
+  margin: 0 0 1.15rem;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #ff731d;
+  box-sizing: border-box;
+  outline: none;
+  color: #0081c9;
+  margin: 10px 0;
+}
+
+input[type="number"]:required,
+input[type="text"]:required,
+input[type="date"]:required {
+  box-shadow: none;
+  outline: none;
+}
+
+.inputs--filled label {
+  transform: translate(0, 0);
+}
+
+label {
+  display: inline-block;
+  margin: 10px 0;
+  color: #1746a2;
+}
+
+button {
+  background: #ff731d;
+  border: none;
+  color: #fff7e9;
+  padding: 0.5rem;
+  margin-top: 60px;
+  width: 100%;
+}
+
+button:hover,
+button:focus {
+  background: #fb9250;
+  cursor: pointer;
+  outline: none;
+}
