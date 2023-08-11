@@ -578,3 +578,81 @@ form > * {
   align-items: center;
   justify-content: center;
 }
+
+/* ///profile page//// */
+.user-details {
+  margin-bottom: auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+}
+
+.user-details > .landing {
+  justify-content: center;
+}
+
+.profile {
+  margin-bottom: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile > form {
+  position: relative;
+  border: none;
+  box-shadow: none;
+  margin-top: 30px;
+}
+
+.profile > form > .detail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile > form > .detail > div {
+  margin: 5px 0;
+}
+
+.profile > form > .detail > .explore-button > button {
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+
+.my_packages {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+}
+
+.my_packages > .landing {
+  justify-content: center;
+  align-items: center;
+}
+
+.my_packages > .packages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.package {
+  font-size: 1.2rem;
+  margin-top: 30px;
+  padding: 20px 50px;
+  background-color: #c0ff85;
+  border-radius: 10px;
+}
+
+.past {
+  background-color: #f3a27d;
+}

@@ -47,6 +47,7 @@
                 <div class="book-button">
                     <form action="booking_template" method="POST">
                         {% csrf_token %}
+                        <input type="text" value="{{month_id}}" name="month_id" hidden>
                         <input type="number" value={{package.id}} name="package_id" hidden>
                         <input type="submit" class="see-button" value="Book">
                     </form>

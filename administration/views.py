@@ -8,7 +8,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
-from vacation_package.models import Place, Month
+from vacation_package.models import Place, Month, Package_Booking
 
 
 def home_view(request):
@@ -64,6 +64,10 @@ def logout_request(request):
 @login_required
 def profile_request(request):
     user = request.user
+    bookings = Package_Booking.objects.filter(
+        user=user).order_by('-date_booked')
+    current_datetime = datetime.now()
+    now = current_datetime.date()
     if request.method == 'POST':
         if request.POST.get('first_name'):
             user.first_name = request.POST['first_name']
@@ -74,18 +78,4 @@ def profile_request(request):
         user.save()
         messages.success(request, 'Your profile has been updated.')
         return redirect('administration:profile')
-    return render(request=request, template_name="administration/profile.html")
-
-
-@login_required
-def update_user(request):
-    user = request.user
-    if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated!')
-            return redirect('profile')
-    else:
-        form = UserChangeForm(instance=user)
-    return render(request, 'update_user.html', {'form': form})
+    return render(request=request, template_name="administration/profile.html", context={'bookings': bookings, 'now': now})

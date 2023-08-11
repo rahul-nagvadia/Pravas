@@ -76,19 +76,18 @@
                 </div>
             </div>
             <div class="searching">
-                <form action="package/" class="index-form">
+                <form action="package/" class="index-form" method="POST">
+                    {% csrf_token %}
                     <div class="explore-button">
                         <button type="submit">Explore Now</button>
                     </div>
                     <div class="destination">
                         <div class="left-part">
-                            <i class="fa-solid fa-location-dot">
-
-                            </i>
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <div class="right-part">
                             <p>Destination</p>
-                            <p class="change"><select id="place-dropdown"></select></p>
+                            <p class="change"><select id="place-dropdown" name="place_id"></select></p>
                         </div>
                     </div>
                     <div class="price">
@@ -97,7 +96,7 @@
                         </div>
                         <div class="right-part">
                             <p>Max Price</p>
-                            <p class="change"><select id="price-dropdown"></select></p>
+                            <p class="change"><select id="price-dropdown" name="max_price"></select></p>
                         </div>
                     </div>
                     <div class="date">
@@ -106,7 +105,7 @@
                         </div>
                         <div class="right-part">
                             <p>Month</p>
-                            <p class="change"><select id="month-dropdown"></select></p>
+                            <p class="change"><select id="month-dropdown" name="month_id"></select></p>
                         </div>
                     </div>
                 </form>
@@ -215,9 +214,15 @@
             {% endfor %}
             ];
 
+        var placesIds = [
+            {% for place in places %}
+        "{{ place.id }}",
+            {% endfor %}
+            ]
+
         var place_dropdown = $('#place-dropdown')
         for (var i = 0; i < placeNames.length; i++) {
-            var option = $('<option>', { value: placeNames[i], text: placeNames[i] });
+            var option = $('<option>', { value: placesIds[i], text: placeNames[i] });
             place_dropdown.append(option);
         }
 
@@ -234,9 +239,15 @@
             {% endfor %}
             ];
 
+        var monthIds = [
+            {% for month in months %}
+        "{{ month.id }}",
+            {% endfor %}
+            ];
+
         var month_dropdown = $("#month-dropdown")
         for (var i = 0; i < months.length; i++) {
-            var month = $('<option>', { value: months[i], text: months[i] });
+            var month = $('<option>', { value: monthIds[i], text: months[i] });
             month_dropdown.append(month)
         }
         

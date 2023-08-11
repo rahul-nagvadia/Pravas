@@ -42,17 +42,19 @@
         <div class="inner-section form-section">
             <form method="post" action="book_package" class="booking-form">
                 {% csrf_token %}
+                <input type="number" value="{{month.id}}" name="month_id" hidden>
                 <input type="hidden" name="package_id" value="{{ package.id }}">
                 <div>
                     <label for="children">Children</label>
-                    <input type="number" name="children" id="children" required>
+                    <input type="number" name="children" id="children" required min="0" max="6">
 
                     <label for="adults">Adults</label>
-                    <input type="number" name="adults" id="adults" required>
+                    <input type="number" name="adults" id="adults" required min="1" max="10">
                 </div>
                 <div>
-                    <label for="date_booked">Date Booked</label>
-                    <input type="date" name="date_booked" id="date_booked" required>
+                    <select name="selected_day" id="selected_day" required>
+                        <option value="">Select a day</option>
+                    </select>
                 </div>
                 <div>
                     <button type="submit">BOOK</button>
@@ -72,6 +74,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script>
+        const months = {
+            "January": 0,
+            "February": 1,
+            "March": 2,
+            "April": 3,
+            "May": 4,
+            "June": 5,
+            "July": 6,
+            "August": 7,
+            "September": 8,
+            "October": 9,
+            "November": 10,
+            "December": 11
+        };
+        $(document).ready(function () {
+            const daysSelect = document.getElementById('selected_day');
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            var currentYear = currentDate.getFullYear();
+            let selectedMonth = "{{month.name}}";
+            if (months[selectedMonth] <= currentMonth) {
+                currentYear++;
+            }
+            daysSelect.innerHTML = '<option value="">Select a day</option>';
+            const daysInMonth = new Date(currentYear, months[selectedMonth], 0).getDate();
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const optionDate = new Date(currentYear, months[selectedMonth] - 1, day);
+                if (optionDate >= currentDate) {
+                    const option = document.createElement('option');
+                    option.value = day;
+                    option.textContent = day;
+                    daysSelect.appendChild(option);
+                }
+            }
+        });
+
+    </script>
 </body>
 
 </html>

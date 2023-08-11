@@ -52,6 +52,7 @@
                 <div class="pacakge-see">
                     <form action="package_details" method="POST">
                         {% csrf_token %}
+                        <input type="text" value="{{month_id}}" name="month_id" hidden>
                         <input type="number" value={{package.id}} name="package_id" hidden>
                         <input type="submit" class="see-button" value="See More">
                     </form>

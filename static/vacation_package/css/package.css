@@ -226,15 +226,18 @@ a:hover {
 }
 
 form {
-  margin-top: -60px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 10%;
   position: relative;
   width: 100%;
   font-family: Port Lligat Sans;
   font-size: 1.5rem;
+}
+
+.form-section > form {
+  margin-top: -60px;
+  padding: 10%;
 }
 
 .inputs--filled {
@@ -287,4 +290,24 @@ button:focus {
   background: #fb9250;
   cursor: pointer;
   outline: none;
+}
+
+#selected_day {
+  border: none;
+  background-color: transparent;
+  color: #1746a2;
+  outline: none;
+  margin-top: 2em;
+}
+
+#selected_day option {
+  background-color: white;
+  color: #1746a2;
+  border: none;
+}
+
+#selected_day:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
